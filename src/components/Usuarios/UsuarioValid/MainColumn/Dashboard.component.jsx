@@ -8,7 +8,7 @@ import {
   EllipsisVerticalIcon,
   MagnifyingGlassIcon,
 } from '@heroicons/react/20/solid'
-import Breadcrumb from '../UI/Breadcrumb.component'
+import Breadcrumb from '../../../UI/Breadcrumb.component'
 
 
 function classNames(...classes) {
@@ -251,8 +251,8 @@ const Dashboard = () => {
                         <p className="text-gray-500">{project.totalMembers} Members</p>
                       </div>
 
-                      {/* Menu de opcions amagat de moment */}
-                      {/* <Menu as="div" className="flex-shrink-0 pr-2">
+                      {/* Menu de opcions amagat de moment
+                      <Menu as="div" className="flex-shrink-0 pr-2">
                         <Menu.Button className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2">
                           <span className="sr-only">Open options</span>
                           <EllipsisVerticalIcon className="h-5 w-5" aria-hidden="true" />
@@ -312,7 +312,7 @@ const Dashboard = () => {
                             </div>
                           </Menu.Items>
                         </Transition>
-                                    </Menu> */}
+                      </Menu> */}
                     </div>
                   </li>
                 ))}

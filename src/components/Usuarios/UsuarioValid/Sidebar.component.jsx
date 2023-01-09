@@ -1,6 +1,6 @@
 import React from 'react'
 
-import LanaIcon from '../assets/avatars/lana.svg'
+import LanaIcon from '../../../assets/avatars/lana.svg'
 
 import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
