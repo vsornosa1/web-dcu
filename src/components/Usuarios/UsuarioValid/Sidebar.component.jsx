@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 
 import LanaIcon from '../../../assets/avatars/lana.svg'
 
@@ -21,12 +21,30 @@ const teams = [
   { name: 'Customer Success', href: '#', bgColorClass: 'bg-yellow-500' },
 ]
 
+
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
+/** Get subject name */
+function getSubjectName(id){
+  fetch(`http://localhost:8081/${id}/expediente`)
+  .then(response => response.json())
+  .then(details => { return details.nombre })
+}
 
 const Sidebar = () => {
+
+  const [subjects, setSubjects] = useState([]);
+  const [nombre, setNombre] = useState('')
+
+  useEffect(()=>{
+    fetch('http://localhost:8081/{dni}/expediente')
+      .then(response => response.json())
+      .then(subjects => setSubjects(subjects))
+  },[])
+
 	return (
 		<div className="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-64 lg:flex-col lg:border-r lg:border-gray-200 lg:bg-gray-100 lg:pt-5 lg:pb-4">
           {/* Sidebar component, swap this element with another sidebar if you like */}
@@ -218,6 +236,26 @@ const Sidebar = () => {
                     </a>
                   ))}
                 </div>
+              </div>
+              <div >
+                {/*Subjects*/}
+                <h3 className="px-3 text-sm font-medium text-gray-500" id="desktop-teams-headline">
+                  Asignaturas
+                </h3>
+                {subjects.map((subject) => (
+                    setNombre(getSubjectName(subject.id)),
+                    <a
+                      key={nombre}
+                      href='#'
+                      className="group flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+                    >
+{/*                       <span
+                        className={classNames(team.bgColorClass, 'w-2.5 h-2.5 mr-4 rounded-full')}
+                        aria-hidden="true"
+                      /> */}
+                      <span className="truncate">{nombre}</span>
+                    </a>
+                  ))}
               </div>
             </nav>
           </div>
