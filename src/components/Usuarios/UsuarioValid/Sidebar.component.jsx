@@ -36,13 +36,18 @@ function getSubjectName(id){
 
 const Sidebar = () => {
 
-  const [subjects, setSubjects] = useState([]);
-  const [nombre, setNombre] = useState('')
+  const [subjectsId, setSubjectsId] = useState([]);
+  const [nombreAsignaturas, setNombreAsignaturas] = useState([])
 
   useEffect(()=>{
     fetch('http://localhost:8081/{dni}/expediente')
       .then(response => response.json())
-      .then(subjects => setSubjects(subjects))
+      .then(subjects => setSubjectsId(subjectsId.asignaturas.id));
+
+    const asignaturasAlumno = subjectsId.map((subjectId)=>(getSubjectName(subjectId)));
+    
+    setNombreAsignaturas(asignaturasAlumno)
+
   },[])
 
 	return (
@@ -242,10 +247,9 @@ const Sidebar = () => {
                 <h3 className="px-3 text-sm font-medium text-gray-500" id="desktop-teams-headline">
                   Asignaturas
                 </h3>
-                {subjects.map((subject) => (
-                    setNombre(getSubjectName(subject.id)),
+                {nombreAsignaturas.map((asignatura) => (
                     <a
-                      key={nombre}
+                      key={asignatura}
                       href='#'
                       className="group flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
                     >
@@ -253,7 +257,7 @@ const Sidebar = () => {
                         className={classNames(team.bgColorClass, 'w-2.5 h-2.5 mr-4 rounded-full')}
                         aria-hidden="true"
                       /> */}
-                      <span className="truncate">{nombre}</span>
+                      <span className="truncate">{asignatura}</span>
                     </a>
                   ))}
               </div>
