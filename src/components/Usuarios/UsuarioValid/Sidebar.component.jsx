@@ -42,7 +42,7 @@ const Sidebar = () => {
   useEffect(()=>{
     fetch('http://localhost:8081/{dni}/expediente')
       .then(response => response.json())
-      .then(subjects => setSubjectsId(subjectsId.asignaturas.id));
+      .then(subjects => setSubjectsId(subjects.asignaturas.id));
 
     const asignaturasAlumno = subjectsId.map((subjectId)=>(getSubjectName(subjectId)));
     
