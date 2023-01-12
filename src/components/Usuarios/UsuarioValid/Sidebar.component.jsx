@@ -36,17 +36,17 @@ function getSubjectName(id){
 
 const Sidebar = () => {
 
-  const [subjectsId, setSubjectsId] = useState([]);
+  const [idAsignaturas, setIdAsignaturas] = useState([]);
   const [nombreAsignaturas, setNombreAsignaturas] = useState([])
 
   useEffect(()=>{
     fetch('http://localhost:8081/{dni}/expediente')
       .then(response => response.json())
-      .then(subjects => setSubjectsId(subjects.asignaturas.id));
-
-    const asignaturasAlumno = subjectsId.map((subjectId)=>(getSubjectName(subjectId)));
+      .then(expediente => setIdAsignaturas(expediente.asignaturas.id));
     
-    setNombreAsignaturas(asignaturasAlumno)
+    setNombreAsignaturas(
+      idAsignaturas.map((subjectId)=>(getSubjectName(subjectId)))
+    );
 
   },[])
 
@@ -60,7 +60,6 @@ const Sidebar = () => {
                 <Menu.Button className="group w-full rounded-md bg-gray-100 px-3.5 py-2 text-left text-sm font-medium text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-gray-100">
                   <span className="flex w-full items-center justify-between">
                     <span className="flex min-w-0 items-center justify-between space-x-3">
-                      {/* <LanaIcon /> */}
                       
                       <img
                         className="h-12 w-12 flex-shrink-0 rounded-full bg-gray-300"
@@ -242,7 +241,7 @@ const Sidebar = () => {
                   ))}
                 </div>
               </div>
-              <div >
+              <div className='mt-8'>
                 {/*Subjects*/}
                 <h3 className="px-3 text-sm font-medium text-gray-500" id="desktop-teams-headline">
                   Asignaturas
