@@ -29,7 +29,7 @@ function classNames(...classes) {
 
 /** Get subject name */
 function getSubjectName(id){
-  fetch(`http://localhost:8081/${id}/expediente`)
+  fetch(`http://172.23.184.210:8083/${id}/detalles`)
   .then(response => response.json())
   .then(details => { return details.nombre })
 }
@@ -39,8 +39,9 @@ const Sidebar = () => {
   const [idAsignaturas, setIdAsignaturas] = useState([]);
   const [nombreAsignaturas, setNombreAsignaturas] = useState([])
 
+
   useEffect(()=>{
-    fetch('http://localhost:8081/{dni}/expediente')
+    fetch('http://172.23.184.210:8083/alumnos/{dni}/expediente')
       .then(response => response.json())
       .then(expediente => setIdAsignaturas(expediente.asignaturas.id));
     
