@@ -12,39 +12,48 @@ const defaultFormFields = {
 	password: '',
 }
 
-const usuarios =
+const usuarios = [
 	{
-		"1": "contra1",
-		"2": "contra2",
-		"3": "contra3",
-	};
+		usuario: '1',
+		contraseña: 'contra1'
+	},
+	{
+		usuario: '2',
+		contraseña: 'contra2'
+	},
+	{
+		usuario: '3',
+		contraseña: 'contra3'
+	},
+];
 
 
 const SignUpNew = () => {
-	const [formFields, setFormFields] = useState(defaultFormFields);
+	const [ formFields, setFormFields ] = useState(defaultFormFields);
 	const { usuario, password } = formFields;
-	const [validCredentials, setValidCredentials] = useState(true);
+	const [ validCredentials, setValidCredentials ] = useState(true);
+	const [ nLogins, setNLogins ] = useState(0);
 
 	useEffect(() => {
-		console.log(`Es ${validCredentials}`)
-	/* 	if(!validCredentials) setValidCredentials(true) */
-	}, [validCredentials]);
-
-	const resetFormFields = () => {
-		setFormFields(defaultFormFields);
-	};
-
-
-	const handleSubmit = async (event) => {
-		event.preventDefault();
-		if(password === usuarios[usuario]) {
+		console.log(`UseEffect render - validCredentials: ${validCredentials}`)
+		if(password === usuarios[usuario - 1]?.contraseña) {
 			window.location.replace('/dashboard');
 			return;
 		} else {
 			resetFormFields();
 			setValidCredentials(false);
-			console.info('Credenciales invalidas');
+			/* console.info('Credenciales invalidas'); */
 		}
+	}, [nLogins]);
+
+
+	const resetFormFields = () => {
+		setFormFields(defaultFormFields);
+	};
+
+	const handleSubmit = async (event) => {
+		event.preventDefault();
+		setNLogins(nLogins + 1);
 	};
 
 
@@ -129,13 +138,9 @@ const SignUpNew = () => {
 									>
 										Accede a AprovaT
 									</button>
-									
-									{/* {validCredentials && (
-										<ErrorModal />
-									)} */}
 								</div>
 							</form>
-							<ErrorModal openState={!validCredentials}/>
+							<ErrorModal openState={!validCredentials} />
 						</div>
 					</div>
 				</div>
