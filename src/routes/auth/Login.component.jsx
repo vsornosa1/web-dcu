@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from "react";
 
+
 import AprovatLogin from '../../assets/media/mano.jpg';
 import ErrorModal from '../../components/UI/ErrorModal.component';
 
@@ -25,9 +26,8 @@ const SignUpNew = () => {
 	const [validCredentials, setValidCredentials] = useState(true);
 
 	useEffect(() => {
-	if (!validCredentials) {
-			<ErrorModal />;
-		}
+		console.log(`Es ${validCredentials}`)
+	/* 	if(!validCredentials) setValidCredentials(true) */
 	}, [validCredentials]);
 
 	const resetFormFields = () => {
@@ -40,7 +40,6 @@ const SignUpNew = () => {
 		if(password === usuarios[usuario]) {
 			window.location.replace('/dashboard');
 			return;
-			//Falta cridar a la API per a obtindre /alumnos/{dni}
 		} else {
 			resetFormFields();
 			setValidCredentials(false);
@@ -130,11 +129,13 @@ const SignUpNew = () => {
 									>
 										Accede a AprovaT
 									</button>
+									
 									{/* {validCredentials && (
 										<ErrorModal />
 									)} */}
 								</div>
 							</form>
+							<ErrorModal openState={!validCredentials}/>
 						</div>
 					</div>
 				</div>

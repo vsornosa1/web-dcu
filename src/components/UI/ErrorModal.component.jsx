@@ -2,9 +2,8 @@ import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { ExclamationTriangleIcon  } from '@heroicons/react/24/outline'
 
-const ErrorModal = () => {
-  const [open, setOpen] = useState(true)
-
+const ErrorModal = ({openState}) => {
+  const [open, setOpen] = useState(openState)
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={setOpen}>

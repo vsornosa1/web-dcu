@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react'
 
+import axios from 'redaxios'
+
 import LanaIcon from '../../../assets/avatars/lana.svg'
 
 import { Fragment } from 'react'
@@ -29,9 +31,16 @@ function classNames(...classes) {
 
 /** Get subject name */
 function getSubjectName(id){
-  fetch(`http://172.23.184.210:8083/${id}/detalles`)
-  .then(response => response.json())
-  .then(details => { return details.nombre })
+  axios({
+    method: 'get',
+    url:`http://172.23.184.210:8083/${id}/detalles`,
+    headers: {'Accept':'application/json'}
+  })
+  .then((response) => { return response.data.nombre })
+  .catch((error) => {
+    console.log(error);
+    return "Error al obtener el nombre del tema.";
+  });
 }
 
 const Sidebar = () => {
@@ -39,16 +48,18 @@ const Sidebar = () => {
   const [idAsignaturas, setIdAsignaturas] = useState([]);
   const [nombreAsignaturas, setNombreAsignaturas] = useState([])
 
-
   useEffect(()=>{
-    fetch('http://172.23.184.210:8083/alumnos/{dni}/expediente')
-      .then(response => response.json())
-      .then(expediente => setIdAsignaturas(expediente.asignaturas.id));
-    
-    setNombreAsignaturas(
-      idAsignaturas.map((subjectId)=>(getSubjectName(subjectId)))
-    );
-
+    axios({
+      method: 'get',
+      url:`http://172.23.184.210:8083/alumnos/{dni}/expediente`,
+      headers: {'Accept':'application/json'}
+    })
+    .then((response) => { 
+      setIdAsignaturas(response.data.asignaturas.id) 
+      setNombreAsignaturas(
+        idAsignaturas.map((subjectId)=>(getSubjectName(subjectId)))
+      );
+    });
   },[])
 
 	return (
