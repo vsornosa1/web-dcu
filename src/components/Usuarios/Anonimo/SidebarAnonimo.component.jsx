@@ -38,8 +38,6 @@ function classNames(...classes) {
 
 
 
-
-
 const SidebarAnonimo = () => {
   const location = useLocation();
   const [navItems, setNavItems] = useState(navigation);
@@ -53,9 +51,10 @@ const SidebarAnonimo = () => {
   
 
 	return (
-		<div className="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-64 lg:flex-col lg:border-r lg:border-gray-200 lg:bg-gray-100 lg:pt-5 lg:pb-4">
+		<div className="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-64 lg:flex-col lg:border-r lg:border-gray-200 lg:bg-gray-100 lg:pt-5 lg:pb-4 lg:">
       {/* Sidebar component, swap this element with another sidebar if you like */}
-      <div className="flex h-0 flex-1 flex-col overflow-y-auto pt-1">
+      <div className="lg:flex lg:flex-col lg:justify-between lg:flex-1">
+        <div className="flex h-0 flex-1 flex-col overflow-y-auto pt-1">
           <div className='relative inline-block px-3 text-left'>
               <span className="flex w-full items-center justify-between">
                 <span className="flex min-w-0 items-center justify-between space-x-3">
@@ -71,35 +70,44 @@ const SidebarAnonimo = () => {
               </span>
           </div>
 
-        {/* Navigation */}
-        <nav className="mt-6 px-3">
-          <div className="space-y-1">
-            <h3 className="px-3 text-sm font-medium text-gray-500" id="desktop-teams-headlinee">
-              Sobre el centro
-            </h3>
-            {navItems?.map((item) => (
-              <Link 
-                key={item.name}
-                to={item.route}
-                className={classNames(
-                  item.current ? 'bg-gray-200 text-gray-900' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50',
-                  'group flex items-center px-6 py-2 text-sm font-medium rounded-md'
-              )}>
-                <img
-                  src={item.icon}
-                  alt="iconCorrect"
+          {/* Navigation */}
+          <nav className="mt-6 px-3">
+            <div className="space-y-1">
+              <h3 className="px-3 text-sm font-medium text-gray-500" id="desktop-teams-headlinee">
+                Sobre el centro
+              </h3>
+              {navItems?.map((item) => (
+                <Link 
+                  key={item.name}
+                  to={item.route}
                   className={classNames(
-                    item.current ? 'text-gray-500' : 'text-gray-400 group-hover:text-gray-500',
-                    'mr-3 flex-shrink-0 h-6 w-6'
-                  )}
-                  aria-hidden="true"
-                />
-                {item.name}
-              </Link>
-            ))}
-          </div>
-          
-        </nav>
+                    item.current ? 'bg-gray-200 text-gray-900' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50',
+                    'group flex items-center px-6 py-2 text-sm font-medium rounded-md'
+                )}>
+                  <img
+                    src={item.icon}
+                    alt="iconCorrect"
+                    className={classNames(
+                      item.current ? 'text-gray-500' : 'text-gray-400 group-hover:text-gray-500',
+                      'mr-3 flex-shrink-0 h-6 w-6'
+                    )}
+                    aria-hidden="true"
+                  />
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+          </nav>
+        </div>
+        
+
+        
+      </div>
+      <div className="flex flex-0 flex-col justify-center align-middle items-center space-y-6 mb-4">
+        <p className="text-2xl -ml-2"> 👋 AprovaT </p>
+        <button className="bg-stone-200 font-semibold hover:bg-stone-300 hover:px-20 px-16 py-1 rounded-full"> 
+          <Link to="/" > Login </Link>
+        </button>
       </div>
     </div>
 	)
