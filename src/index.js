@@ -7,8 +7,8 @@ import reportWebVitals from './reportWebVitals';
 import { UserProvider } from './contexts/user.context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  
+
+root.render(  
   <React.StrictMode>
     <BrowserRouter>
       <UserProvider>
