@@ -105,7 +105,9 @@ const SidebarAnonimo = () => {
       </div>
       <div className="flex flex-0 flex-col justify-center align-middle items-center space-y-6 mb-4">
         <p className="text-2xl -ml-2"> 👋 AprovaT </p>
-        <button className="bg-stone-200 font-semibold hover:bg-stone-300 hover:px-20 px-16 py-1 rounded-full"> Login </button>
+        <button className="bg-stone-200 font-semibold hover:bg-stone-300 hover:px-20 px-16 py-1 rounded-full"> 
+          <Link to="/" > Login </Link>
+        </button>
       </div>
     </div>
 	)
