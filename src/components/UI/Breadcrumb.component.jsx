@@ -1,17 +1,22 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { HomeIcon } from '@heroicons/react/20/solid'
-
-
-
-const pages = [
-  { name: 'Aprovat de Lana Ruedines', href: '#', current: false },
-]
-
-const currentPage = { name: 'Dashboard', href: '#', current: true }
+import { useLocation } from 'react-router-dom';
 
 
 
 const Breadcrumb = () => {
+  const location = useLocation();
+  const [pages, setPages] = useState([]);
+  const [currentPage, setCurrentPage] = useState("Infrastructura");
+
+  useEffect(() => {
+    const path = location.pathname.split("/").slice(1);
+    const pathNormalized = path.map(p => p.charAt(0).toUpperCase() + p.slice(1));
+    setPages([{ name: "AprovaT " + pathNormalized[0], href: "#", current: false }]);
+    setCurrentPage(pathNormalized[1] || "Infrastructura");
+  }, [location.pathname]);
+
+
 	return (
 		<nav className="flex" aria-label="Breadcrumb">
       <ol className="flex items-center space-x-4">
@@ -23,6 +28,8 @@ const Breadcrumb = () => {
             </a>
           </div>
         </li>
+        
+
         {pages.map((page) => (
           <li key={page.name}>
             <div className="flex items-center">
@@ -43,6 +50,7 @@ const Breadcrumb = () => {
             </div>
           </li>
         ))}
+
         <li>
           <div className="flex items-center">
             <svg
@@ -55,13 +63,14 @@ const Breadcrumb = () => {
               <path d="M5.555 17.776l8-16 .894.448-8 16-.894-.448z" />
             </svg>
             <a
-              href={currentPage.href}
+              href="#"
               className="ml-4 text-sm font-medium text-black-500 hover:text-gray-700"
-              aria-current={currentPage.current ? 'page' : undefined}>
-              {currentPage.name}
+              aria-current='page'>
+              {currentPage}
             </a>  
           </div>
         </li>
+
       </ol>
     </nav>
 	)

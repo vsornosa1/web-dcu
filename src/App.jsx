@@ -8,6 +8,7 @@ import Dashboard from './components/Usuarios/UsuarioValid/MainColumn/Dashboard.c
 
 import Infrastructura from './components/Usuarios/Anonimo/MainColumn/Infrastructura.component';
 import EquipoDirectivo from './components/Usuarios/Anonimo/MainColumn/EquipoDirectivo.component';
+import AsignaturasRamas from './components/Usuarios/Anonimo/MainColumn/AsignaturasRamas.component';
 
 
 
@@ -20,6 +21,7 @@ const App = () => {
       <Route path="anonimo" element={<Home isAnonimo />} >
         <Route index element={<Infrastructura />} />
         <Route path="equipo" element={<EquipoDirectivo/>} />
+        <Route path="asignaturas" element={<AsignaturasRamas/>} />
       </Route>
 
       <Route path="dashboard" element={<Home isAnonimo={false} />} >
