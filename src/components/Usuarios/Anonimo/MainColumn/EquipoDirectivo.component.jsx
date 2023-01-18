@@ -1,5 +1,5 @@
 import Header from "../../../UI/Header.component";
-import EquipoCard from "../../../UI/EquipoCard.component";
+import EquipoCard from "../../../UI/Cards/EquipoCard.component";
 import SearchBar from "../../../UI/SearchBar.component";
 import StackedAvatars from "../../../UI/StackedAvatars.component";
 

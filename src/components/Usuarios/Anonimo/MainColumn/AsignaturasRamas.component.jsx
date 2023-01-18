@@ -1,6 +1,6 @@
 import Header from "../../../UI/Header.component";
-import RamaCard from "../../../UI/RamaCard.component";
-import AsignaturaCard from "../../../UI/AsignaturaCard.component";
+import RamaCard from "../../../UI/Cards/RamaCard.component";
+import AsignaturaCard from "../../../UI/Cards/AsignaturaCard.component";
 
 import Brujula from "../../../../assets/media/Brujula.svg";
 import Cohete from   "../../../../assets/media/Cohete.svg";
@@ -126,7 +126,7 @@ const AsignaturasRamas = () => {
 						</div>
 
 						<div className="relative col-span-1">
-								<div class="absolute left-1/2 -ml-0.5 w-0.5 h-full bg-gray-400"></div>
+								<div className="absolute left-1/2 -ml-0.5 w-0.5 h-full bg-gray-400"></div>
 						</div>
 
             <div className="col-span-5">

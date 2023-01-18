@@ -1,5 +1,5 @@
 import React from 'react';
-import BuildingCard from '../../../UI/BuildingCard.component';
+import BuildingCard from '../../../UI/Cards/BuildingCard.component';
 import Header from '../../../UI/Header.component';
 
 const Infrastructura = () => {
