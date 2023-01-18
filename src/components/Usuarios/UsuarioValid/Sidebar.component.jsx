@@ -1,16 +1,16 @@
-import React, {useState, useEffect} from 'react'
-
 import axios from 'redaxios'
-
 import LanaIcon from '../../../assets/avatars/lana.svg'
+import { UserContext } from '../../../contexts/user.context'
+import React, {useState, useEffect, useContext, Fragment} from 'react'
 
-import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import {
   ChevronUpDownIcon,
   MagnifyingGlassIcon,
 } from '@heroicons/react/20/solid'
 import { Bars4Icon, ClockIcon, HomeIcon } from '@heroicons/react/24/outline'
+
+
 
 const navigation = [
   { name: 'Home', href: '#', icon: HomeIcon, current: true },
@@ -45,13 +45,14 @@ function getSubjectName(id){
 
 const Sidebar = () => {
 
+  const { currentUser } = useContext(UserContext);
   const [idAsignaturas, setIdAsignaturas] = useState([]);
   const [nombreAsignaturas, setNombreAsignaturas] = useState([])
 
   useEffect(()=>{
-    axios({
+    /* axios({
       method: 'get',
-      url:`http://172.23.184.210:8083/alumnos/{dni}/expediente`,
+      url:`http://172.23.184.210:8083/alumnos/{currentUser.usuario}/expediente`,
       headers: {'Accept':'application/json'}
     })
     .then((response) => { 
@@ -59,8 +60,9 @@ const Sidebar = () => {
       setNombreAsignaturas(
         idAsignaturas.map((subjectId)=>(getSubjectName(subjectId)))
       );
-    });
-  },[])
+    }); */
+    console.log(currentUser)
+  },[currentUser])
 
 	return (
 		<div className="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-64 lg:flex-col lg:border-r lg:border-gray-200 lg:bg-gray-100 lg:pt-5 lg:pb-4">
@@ -79,7 +81,7 @@ const Sidebar = () => {
                         alt=""
                       />
                       <span className="flex min-w-0 flex-1 flex-col">
-                        <span className="truncate text-sm font-medium text-gray-900"> Lana Ruedines </span>
+                        <span className="truncate text-sm font-medium text-gray-900"> {currentUser} </span>
                         <span className="truncate text-sm text-gray-500"> ruedines@upv.es </span>
                       </span>
                     </span>

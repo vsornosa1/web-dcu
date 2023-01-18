@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from "react";
-
+import { useState, useEffect, useContext } from "react";
+import { UserContext } from '../../contexts/user.context';
 
 import AprovatLogin from '../../assets/media/mano.jpg';
 import ErrorModal from '../../components/UI/ErrorModal.component';
+
 
 
 
@@ -14,8 +15,8 @@ const defaultFormFields = {
 
 const usuarios = [
 	{
-		usuario: '1',
-		contraseña: 'contra1'
+		usuario: '1234567D',
+		contraseña: 'c1'
 	},
 	{
 		usuario: '2',
@@ -28,23 +29,14 @@ const usuarios = [
 ];
 
 
-const SignUpNew = () => {
+const Login = () => {
+	const { currentUser, setCurrentUser } = useContext(UserContext)
+
 	const [ formFields, setFormFields ] = useState(defaultFormFields);
 	const { usuario, password } = formFields;
 	const [ validCredentials, setValidCredentials ] = useState(true);
-	const [ nLogins, setNLogins ] = useState(0);
 
-	useEffect(() => {
-		console.log(`UseEffect render - validCredentials: ${validCredentials}`)
-		if(password === usuarios[usuario - 1]?.contraseña) {
-			window.location.replace('/dashboard');
-			return;
-		} else {
-			resetFormFields();
-			setValidCredentials(false);
-			/* console.info('Credenciales invalidas'); */
-		}
-	}, [nLogins]);
+
 
 
 	const resetFormFields = () => {
@@ -53,7 +45,19 @@ const SignUpNew = () => {
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
-		setNLogins(nLogins + 1);
+		const usuariValid  = usuarios.find(u => 
+			u.usuario === usuario 
+			&& u.contraseña === password
+		);
+		if(usuariValid){
+			setCurrentUser(usuariValid);
+			console.log(currentUser)
+			/* window.location.replace('/dashboard'); */
+		} else {
+			resetFormFields();
+			setValidCredentials(false);
+			console.info("Credenciales invalidas");
+		}
 	};
 
 
@@ -149,4 +153,4 @@ const SignUpNew = () => {
 	)
 }
 
-export default SignUpNew;
+export default Login;
