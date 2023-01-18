@@ -6,11 +6,11 @@ import Login from './routes/auth/Login.component';
 
 import Dashboard from './components/Usuarios/UsuarioValid/MainColumn/Dashboard.component';
 
+import Normas from './components/Usuarios/Anonimo/MainColumn/Normas.component';
+import Contacto from './components/Usuarios/Anonimo/MainColumn/Contacto.component';
 import Infrastructura from './components/Usuarios/Anonimo/MainColumn/Infrastructura.component';
 import EquipoDirectivo from './components/Usuarios/Anonimo/MainColumn/EquipoDirectivo.component';
 import AsignaturasRamas from './components/Usuarios/Anonimo/MainColumn/AsignaturasRamas.component';
-import Normas from './components/Usuarios/Anonimo/MainColumn/Normas.component';
-import Contacto from './components/Usuarios/Anonimo/MainColumn/Contacto.component';
 
 
 const App = () => {
