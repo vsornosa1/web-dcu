@@ -52,7 +52,7 @@ const Login = () => {
 		if(usuariValid){
 			setCurrentUser(usuariValid);
 			console.log(currentUser)
-			/* window.location.replace('/dashboard'); */
+			window.location.replace('/dashboard');
 		} else {
 			resetFormFields();
 			setValidCredentials(false);
