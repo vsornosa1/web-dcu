@@ -125,48 +125,7 @@ const Rightbar = () => {
                             'block px-4 py-2 text-sm'
                           )}
                         >
-                          Settings
-                        </a>
-                      )}
-                    </Menu.Item>
-                    <Menu.Item>
-                      {({ active }) => (
-                        <a
-                          href="# "
-                          className={classNames(
-                            active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                            'block px-4 py-2 text-sm'
-                          )}
-                        >
                           Notifications
-                        </a>
-                      )}
-                    </Menu.Item>
-                  </div>
-                  <div className="py-1">
-                    <Menu.Item>
-                      {({ active }) => (
-                        <a
-                          href="# "
-                          className={classNames(
-                            active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                            'block px-4 py-2 text-sm'
-                          )}
-                        >
-                          Get desktop app
-                        </a>
-                      )}
-                    </Menu.Item>
-                    <Menu.Item>
-                      {({ active }) => (
-                        <a
-                          href="# "
-                          className={classNames(
-                            active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                            'block px-4 py-2 text-sm'
-                          )}
-                        >
-                          Support
                         </a>
                       )}
                     </Menu.Item>
@@ -192,7 +151,7 @@ const Rightbar = () => {
             {/* Sidebar Search */}
             <div className="mt-5 px-3">
               <label htmlFor="search" className="sr-only">
-                Search
+                Buscar...
               </label>
               <div className="relative mt-1 rounded-md shadow-sm">
                 <div
@@ -206,7 +165,7 @@ const Rightbar = () => {
                   name="search"
                   id="search"
                   className="block w-full rounded-md border-gray-300 pl-9 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                  placeholder="Search"
+                  placeholder="Buscar..."
                 />
               </div>
             </div>

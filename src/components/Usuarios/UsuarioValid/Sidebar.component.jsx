@@ -1,7 +1,7 @@
 /* import axios from 'redaxios' */
-import LanaIcon from '../../../assets/avatars/lana.svg'
 import { UserContext } from '../../../contexts/user.context'
-import React, {useState, useEffect, useContext, Fragment} from 'react'
+import { Link } from 'react-router-dom';
+import React, {useState, useEffect, useContext, Fragment} from 'react';
 
 import { Menu, Transition } from '@headlessui/react'
 import {
@@ -9,6 +9,7 @@ import {
   MagnifyingGlassIcon,
 } from '@heroicons/react/20/solid'
 
+import LanaIcon from '../../../assets/avatars/lana.svg'
 import PerfilIcon from '../../../assets/media/PerfilIcon.svg';
 import CentroIcon from '../../../assets/media/CentroIcon.svg';
 import HorarioIcon from '../../../assets/media/HorarioIcon.svg';
@@ -127,19 +128,6 @@ const Sidebar = () => {
                             'block px-4 py-2 text-sm'
                           )}
                         >
-                          Settings
-                        </a>
-                      )}
-                    </Menu.Item>
-                    <Menu.Item>
-                      {({ active }) => (
-                        <a
-                          href="# "
-                          className={classNames(
-                            active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                            'block px-4 py-2 text-sm'
-                          )}
-                        >
                           Notifications
                         </a>
                       )}
@@ -148,43 +136,17 @@ const Sidebar = () => {
                   <div className="py-1">
                     <Menu.Item>
                       {({ active }) => (
-                        <a
-                          href="# "
-                          className={classNames(
-                            active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                            'block px-4 py-2 text-sm'
-                          )}
-                        >
-                          Get desktop app
-                        </a>
-                      )}
-                    </Menu.Item>
-                    <Menu.Item>
-                      {({ active }) => (
-                        <a
-                          href="# "
-                          className={classNames(
-                            active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                            'block px-4 py-2 text-sm'
-                          )}
-                        >
-                          Support
-                        </a>
-                      )}
-                    </Menu.Item>
-                  </div>
-                  <div className="py-1">
-                    <Menu.Item>
-                      {({ active }) => (
-                        <a
-                          href="# "
-                          className={classNames(
-                            active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                            'block px-4 py-2 text-sm'
-                          )}
-                        >
-                          Logout
-                        </a>
+                        <Link to="/" >
+                          <a
+                            href="# "
+                            className={classNames(
+                              active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                              'block px-4 py-2 text-sm'
+                            )}
+                          >
+                            Logout
+                          </a>
+                        </Link>
                       )}
                     </Menu.Item>
                   </div>
@@ -194,7 +156,7 @@ const Sidebar = () => {
             {/* Sidebar Search */}
             <div className="mt-5 px-3">
               <label htmlFor="search" className="sr-only">
-                Search
+                Buscar...
               </label>
               <div className="relative mt-1 rounded-md shadow-sm">
                 <div
@@ -208,7 +170,7 @@ const Sidebar = () => {
                   name="search"
                   id="search"
                   className="block w-full rounded-md border-gray-300 pl-9 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                  placeholder="Search"
+                  placeholder="Buscar..."
                 />
               </div>
             </div>

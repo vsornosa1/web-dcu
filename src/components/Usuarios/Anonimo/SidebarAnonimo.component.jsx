@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { useLocation } from 'react-router-dom';
-import Buildings from '../../../assets/media/Buildings.svg'
-import UsersThree from '../../../assets/media/UsersThree.svg'
-import Notebook from '../../../assets/media/Notebook.svg'
-import BookOpen from '../../../assets/media/BookOpen.svg'
-import PaperPlaneTilt from '../../../assets/media/PaperPlaneTilt.svg'
-import AnonimIcon from '../../../assets/media/AnonimIcon.svg'
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+
+import Buildings from '../../../assets/media/Buildings.svg';
+import UsersThree from '../../../assets/media/UsersThree.svg';
+import Notebook from '../../../assets/media/Notebook.svg';
+import BookOpen from '../../../assets/media/BookOpen.svg';
+import PaperPlaneTilt from '../../../assets/media/PaperPlaneTilt.svg';
+import AnonimIcon from '../../../assets/media/AnonimIcon.svg';
 
 
 const navigation = [
@@ -15,11 +15,11 @@ const navigation = [
   { name: 'Asignaturas/Ramas', route: '/anonimo/asignaturas', href: '#', current: false, icon: Notebook },
   { name: 'Normas ESO/Bach.', route: '/anonimo/normativa', href: '#', current: false, icon: BookOpen },
   { name: 'Contacto + RRSS', route: '/anonimo/contacto', href: '#', current: false, icon: PaperPlaneTilt },
-]
+];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
-}
+};
 
 
 
@@ -32,7 +32,7 @@ const SidebarAnonimo = () => {
       return {...item, current: (item.route === location.pathname)};
     });
     setNavItems(a);
-  },[location.pathname])
+  },[location.pathname]);
   
 
 	return (
