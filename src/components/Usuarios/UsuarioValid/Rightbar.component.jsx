@@ -31,7 +31,7 @@ function classNames(...classes) {
 
 /** Get subject name */
 function getSubjectName(id){
-  axios.get({
+  axios({
     method: 'get',
     url:`http://172.23.184.210:8083/${id}/detalles`,
     headers: {'Accept':'application/json'}
@@ -39,18 +39,18 @@ function getSubjectName(id){
   .then((response) => { return response.data.nombre })
   .catch((error) => {
     console.log(error);
-    return ("Error al obtener el nombre de la asignatura asociada con el ID: " + id);
+    return "Error al obtener el nombre del tema.";
   });
 }
 
-const Sidebar = () => {
+const Rightbar = () => {
 
   const { currentUser } = useContext(UserContext);
   const [idAsignaturas, setIdAsignaturas] = useState([]);
   const [nombreAsignaturas, setNombreAsignaturas] = useState([])
 
   useEffect(()=>{
-    /* axios.get({
+    /* axios({
       method: 'get',
       url:`http://172.23.184.210:8083/alumnos/{currentUser.usuario}/expediente`,
       headers: {'Accept':'application/json'}
@@ -65,7 +65,7 @@ const Sidebar = () => {
   },[currentUser])
 
 	return (
-		<div className="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-64 lg:flex-col lg:border-r lg:border-gray-200 lg:bg-gray-100 lg:pt-5 lg:pb-4">
+		<div className="hidden lg:fixed lg:inset-y-0 lg:flex lg:items-end lg:w-64 lg:flex-col lg:border-l lg:border-gray-200 lg:bg-gray-100 lg:pt-5 lg:pb-4">
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className="flex h-0 flex-1 flex-col overflow-y-auto pt-1">
             {/* User account dropdown */}
@@ -280,4 +280,4 @@ const Sidebar = () => {
 	)
 }
 
-export default Sidebar
+export default Rightbar

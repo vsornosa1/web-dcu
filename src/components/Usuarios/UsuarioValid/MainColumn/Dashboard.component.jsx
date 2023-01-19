@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Header from '../../../UI/Header.component';
+import StatsCard from '../../../UI/Cards/StatsCard.component';
 
 import { Fragment, useState } from 'react'
 import { Menu, Transition } from '@headlessui/react'
@@ -52,6 +53,32 @@ const projects = [
 
 const pinnedProjects = projects.filter((project) => project.pinned)
 
+const stats = [
+  { 
+		name: 'Nota Media ESO',
+		stat: '8,21', 
+		change: '11\'01%',
+		changeType: 'increase',
+		idx: 2,
+		tieneImg: false
+	},
+  { 
+		name: 'Tests totales 4º ESO',
+		stat: '367',
+		change: '9\'15%',
+		changeType: 'increase',
+		idx: 1,
+		tieneImg: false
+	},
+  { 
+		name: 'Tareas entregadas',
+		stat: '1.016',
+		change: '-0\'56%',
+		changeType: 'decrease',
+		idx: 2,
+		tieneImg: false
+	},
+]
 
 
 const Dashboard = () => {
@@ -211,94 +238,22 @@ const Dashboard = () => {
         {/* Header de dalt */}
         <Header />
 
-        {/* Pinned projects */}
+        {/* Stats */}
         <div className="mt-6 px-4 sm:px-6 lg:px-8">
-          <h2 className="text-sm font-medium text-gray-900"> Curso de Lana aquí - dinamic </h2>
-          <ul role="list" className="mt-3 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 xl:grid-cols-4">
-            {pinnedProjects.map((project) => (
-              <li key={project.id} className="relative col-span-1 flex rounded-md shadow-sm">
-                <div
-                  className={classNames(
-                    project.bgColorClass,
-                    'flex-shrink-0 flex items-center justify-center w-16 text-white text-sm font-medium rounded-l-md'
-                  )}
-                >
-                  {project.initials}
-                </div>
-                <div className="flex flex-1 items-center justify-between truncate rounded-r-md border-t border-r border-b border-gray-200 bg-white">
-                  <div className="flex-1 truncate px-4 py-2 text-sm">
-                    <a href="#" className="font-medium text-gray-900 hover:text-gray-600">
-                      {project.title}
-                    </a>
-                    <p className="text-gray-500">{project.totalMembers} Members</p>
-                  </div>
+          <h2 className="text-sm font-medium text-gray-900"> 4º ESO: </h2>
+            <div className="flex">
+              {
+                stats.map(stat => (
+                  <StatsCard className="" item={stat} />
+                ))
+              }
+            </div>
+        </div>
 
-                  {/* Menu de opcions amagat de moment
-                  <Menu as="div" className="flex-shrink-0 pr-2">
-                    <Menu.Button className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2">
-                      <span className="sr-only">Open options</span>
-                      <EllipsisVerticalIcon className="h-5 w-5" aria-hidden="true" />
-                    </Menu.Button>
-                    <Transition
-                      as={Fragment}
-                      enter="transition ease-out duration-100"
-                      enterFrom="transform opacity-0 scale-95"
-                      enterTo="transform opacity-100 scale-100"
-                      leave="transition ease-in duration-75"
-                      leaveFrom="transform opacity-100 scale-100"
-                      leaveTo="transform opacity-0 scale-95"
-                    >
-                      <Menu.Items className="absolute right-10 top-3 z-10 mx-3 mt-1 w-48 origin-top-right divide-y divide-gray-200 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                        <div className="py-1">
-                          <Menu.Item>
-                            {({ active }) => (
-                              <a
-                                href="#"
-                                className={classNames(
-                                  active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                  'block px-4 py-2 text-sm'
-                                )}
-                              >
-                                Opcio 1
-                              </a>
-                            )}
-                          </Menu.Item>
-                        </div>
-                        <div className="py-1">
-                          <Menu.Item>
-                            {({ active }) => (
-                              <a
-                                href="#"
-                                className={classNames(
-                                  active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                  'block px-4 py-2 text-sm'
-                                )}
-                              >
-                                Opcio 2.1
-                              </a>
-                            )}
-                          </Menu.Item>
-                          <Menu.Item>
-                            {({ active }) => (
-                              <a
-                                href="#"
-                                className={classNames(
-                                  active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                  'block px-4 py-2 text-sm'
-                                )}
-                              >
-                                Opcio 2.2
-                              </a>
-                            )}
-                          </Menu.Item>
-                        </div>
-                      </Menu.Items>
-                    </Transition>
-                  </Menu> */}
-                </div>
-              </li>
-            ))}
-          </ul>
+        {/* Stats */}
+        <div className="mt-6 px-4 sm:px-6 lg:px-8 grid grid-cols-10 gap-4">
+            <div className="col-span-7 bg-red-300">aaaaaaa</div>
+            <div className="col-span-3 bg-blue-300">bbbbbbbbbbbbbbbbb</div>
         </div>
 
         {/* Projects llista - Dinamic + responsive en GUIs mes xicotetes que sm: */}
