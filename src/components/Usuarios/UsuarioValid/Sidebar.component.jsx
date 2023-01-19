@@ -1,4 +1,4 @@
-import axios from 'redaxios'
+/* import axios from 'redaxios' */
 import LanaIcon from '../../../assets/avatars/lana.svg'
 import { UserContext } from '../../../contexts/user.context'
 import React, {useState, useEffect, useContext, Fragment} from 'react'
@@ -8,19 +8,21 @@ import {
   ChevronUpDownIcon,
   MagnifyingGlassIcon,
 } from '@heroicons/react/20/solid'
-import { Bars4Icon, ClockIcon, HomeIcon } from '@heroicons/react/24/outline'
+
+import PerfilIcon from '../../../assets/media/PerfilIcon.svg';
+import CentroIcon from '../../../assets/media/CentroIcon.svg';
+import HorarioIcon from '../../../assets/media/HorarioIcon.svg';
+import NotificacionesIcon from '../../../assets/media/NotificacionesIcon.svg';
+import ChatsIcon from '../../../assets/media/ChatsIcon.svg';
+import IconoTabs from '../../../assets/media/IconoTabs.svg';
 
 
-
-const navigation = [
-  { name: 'Home', href: '#', icon: HomeIcon, current: true },
-  { name: 'My tasks', href: '#', icon: Bars4Icon, current: false },
-  { name: 'Recent', href: '#', icon: ClockIcon, current: false },
-]
-const teams = [
-  { name: 'Engineering', href: '#', bgColorClass: 'bg-indigo-500' },
-  { name: 'Human Resources', href: '#', bgColorClass: 'bg-green-500' },
-  { name: 'Customer Success', href: '#', bgColorClass: 'bg-yellow-500' },
+const paginasAprovaT = [
+  { idx: 1, nombre: 'Perfil', icono: PerfilIcon, current: false  },
+  { idx: 2, nombre: 'Centro', icono: CentroIcon, current: false  },
+  { idx: 3, nombre: 'Horario', icono: HorarioIcon, current: false  },
+  { idx: 4, nombre: 'Notificaciones', icono: NotificacionesIcon, current: false  },
+  { idx: 5, nombre: 'Chats', icono: ChatsIcon, current: false  },
 ]
 
 
@@ -210,53 +212,8 @@ const Sidebar = () => {
                 />
               </div>
             </div>
-            {/* Navigation */}
             <nav className="mt-6 px-3">
-              <div className="space-y-1">
-                {navigation.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className={classNames(
-                      item.current ? 'bg-gray-200 text-gray-900' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50',
-                      'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
-                    )}
-                    aria-current={item.current ? 'page' : undefined}
-                  >
-                    <item.icon
-                      className={classNames(
-                        item.current ? 'text-gray-500' : 'text-gray-400 group-hover:text-gray-500',
-                        'mr-3 flex-shrink-0 h-6 w-6'
-                      )}
-                      aria-hidden="true"
-                    />
-                    {item.name}
-                  </a>
-                ))}
-              </div>
-              <div className="mt-8">
-                {/* Secondary navigation */}
-                <h3 className="px-3 text-sm font-medium text-gray-500" id="desktop-teams-headline">
-                  Teams
-                </h3>
-                <div className="mt-1 space-y-1" role="group" aria-labelledby="desktop-teams-headline">
-                  {teams.map((team) => (
-                    <a
-                      key={team.name}
-                      href={team.href}
-                      className="group flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
-                    >
-                      <span
-                        className={classNames(team.bgColorClass, 'w-2.5 h-2.5 mr-4 rounded-full')}
-                        aria-hidden="true"
-                      />
-                      <span className="truncate">{team.name}</span>
-                    </a>
-                  ))}
-                </div>
-              </div>
               <div className='mt-8'>
-                {/*Subjects*/}
                 <h3 className="px-3 text-sm font-medium text-gray-500" id="desktop-teams-headline">
                   Asignaturas
                 </h3>
@@ -264,16 +221,42 @@ const Sidebar = () => {
                     <a
                       key={asignatura}
                       href='# '
-                      className="group flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+                      className={classNames(
+                        asignatura.current ? 'bg-gray-200 text-gray-900' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50',
+                        'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
+                      )}
                     >
-{/*                       <span
-                        className={classNames(team.bgColorClass, 'w-2.5 h-2.5 mr-4 rounded-full')}
-                        aria-hidden="true"
-                      /> */}
                       <span className="truncate">{asignatura}</span>
                     </a>
                   ))}
               </div>
+              <div className="mt-8">
+                <h3 className="px-3 text-sm font-medium text-gray-500" id="desktop-teams-headline">
+                  Páginas de AprovaT
+                </h3>
+                <div className="mt-1 space-y-1" role="group" aria-labelledby="desktop-teams-headline">
+                  {paginasAprovaT.map((pagina) => (
+                    <a
+                      key={pagina.idx}
+                      href="# "
+                      className="group flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+                    >
+                      <img 
+                        src={IconoTabs}
+                        alt="Icono de todas las tabs (>)"
+                        className='text-gray-400 group-hover:text-gray-500 flex-shrink-0 h-6 w-6'
+                      />
+                      <img 
+                        src={pagina.icono}
+                        alt="Icono de la página"
+                        className='text-gray-400 group-hover:text-gray-500 mr-2 flex-shrink-0 h-6 w-6'
+                      />
+                      <span className="truncate">{pagina.nombre}</span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+              
             </nav>
           </div>
         </div>
