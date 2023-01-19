@@ -3,12 +3,10 @@ import React from 'react'
 import Header from '../../../UI/Header.component';
 import StatsCard from '../../../UI/Cards/StatsCard.component';
 
-import { Fragment, useState } from 'react'
+import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
-import { Bars3CenterLeftIcon } from '@heroicons/react/24/outline'
 import {
   ChevronRightIcon,
-  EllipsisVerticalIcon,
   MagnifyingGlassIcon,
 } from '@heroicons/react/20/solid'
 
@@ -51,7 +49,6 @@ const projects = [
   // Mes projectes...
 ]
 
-const pinnedProjects = projects.filter((project) => project.pinned)
 
 const stats = [
   { 
@@ -82,24 +79,14 @@ const stats = [
 
 
 const Dashboard = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(false)
-
 
 	return (
 		<div className="flex flex-col lg:pl-64">
       {/* Responsive - Pantalles xicotetes */}
       <div className="sticky top-0 z-10 flex h-16 flex-shrink-0 border-b border-gray-200 bg-white lg:hidden">
-        <button
-          type="button"
-          className="border-r border-gray-200 px-4 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500 lg:hidden"
-          onClick={() => setSidebarOpen(true)}
-        >
-          <span className="sr-only">Open sidebar</span>
-          <Bars3CenterLeftIcon className="h-6 w-6" aria-hidden="true" />
-        </button>
         <div className="flex flex-1 justify-between px-4 sm:px-6 lg:px-8">
           <div className="flex flex-1">
-            <form className="flex w-full md:ml-0" action="#" method="GET">
+            <form className="flex w-full md:ml-0" action="# " method="GET">
               <label htmlFor="search-field" className="sr-only">
                 Search
               </label>
@@ -144,7 +131,7 @@ const Dashboard = () => {
                     <Menu.Item>
                       {({ active }) => (
                         <a
-                          href="#"
+                          href="# "
                           className={classNames(
                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                             'block px-4 py-2 text-sm'
@@ -157,7 +144,7 @@ const Dashboard = () => {
                     <Menu.Item>
                       {({ active }) => (
                         <a
-                          href="#"
+                          href="# "
                           className={classNames(
                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                             'block px-4 py-2 text-sm'
@@ -170,7 +157,7 @@ const Dashboard = () => {
                     <Menu.Item>
                       {({ active }) => (
                         <a
-                          href="#"
+                          href="# "
                           className={classNames(
                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                             'block px-4 py-2 text-sm'
@@ -185,7 +172,7 @@ const Dashboard = () => {
                     <Menu.Item>
                       {({ active }) => (
                         <a
-                          href="#"
+                          href="# "
                           className={classNames(
                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                             'block px-4 py-2 text-sm'
@@ -198,7 +185,7 @@ const Dashboard = () => {
                     <Menu.Item>
                       {({ active }) => (
                         <a
-                          href="#"
+                          href="# "
                           className={classNames(
                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                             'block px-4 py-2 text-sm'
@@ -213,7 +200,7 @@ const Dashboard = () => {
                     <Menu.Item>
                       {({ active }) => (
                         <a
-                          href="#"
+                          href="# "
                           className={classNames(
                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                             'block px-4 py-2 text-sm'
@@ -261,10 +248,10 @@ const Dashboard = () => {
           <div className="px-4 sm:px-6">
             <h2 className="text-sm font-medium text-gray-900">Projects</h2>
           </div>
-          <ul role="list" className="mt-3 divide-y divide-gray-100 border-t border-gray-200">
+          <ul className="mt-3 divide-y divide-gray-100 border-t border-gray-200">
             {projects.map((project) => (
               <li key={project.id}>
-                <a href="#" className="group flex items-center justify-between px-4 py-4 hover:bg-gray-50 sm:px-6">
+                <a href="# " className="group flex items-center justify-between px-4 py-4 hover:bg-gray-50 sm:px-6">
                   <span className="flex items-center space-x-3 truncate">
                     <span
                       className={classNames(project.bgColorClass, 'w-2.5 h-2.5 flex-shrink-0 rounded-full')}
@@ -323,7 +310,7 @@ const Dashboard = () => {
                           className={classNames(project.bgColorClass, 'flex-shrink-0 w-2.5 h-2.5 rounded-full')}
                           aria-hidden="true"
                         />
-                        <a href="#" className="truncate hover:text-gray-600">
+                        <a href="# " className="truncate hover:text-gray-600">
                           <span>
                             {project.title} <span className="font-normal text-gray-500">in {project.team}</span>
                           </span>
@@ -353,7 +340,7 @@ const Dashboard = () => {
                       {project.lastUpdated}
                     </td>
                     <td className="whitespace-nowrap px-6 py-3 text-right text-sm font-medium">
-                      <a href="#" className="text-indigo-600 hover:text-indigo-900">
+                      <a href="# " className="text-indigo-600 hover:text-indigo-900">
                         Edit
                       </a>
                     </td>

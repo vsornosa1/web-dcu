@@ -29,7 +29,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-/** Get subject name */
+/** Get subject name 
 function getSubjectName(id){
   axios.get({
     method: 'get',
@@ -41,12 +41,12 @@ function getSubjectName(id){
     console.log(error);
     return ("Error al obtener el nombre de la asignatura asociada con el ID: " + id);
   });
-}
+}*/
 
 const Sidebar = () => {
 
   const { currentUser } = useContext(UserContext);
-  const [idAsignaturas, setIdAsignaturas] = useState([]);
+  /* const [idAsignaturas, setIdAsignaturas] = useState([]); */
   const [nombreAsignaturas, setNombreAsignaturas] = useState([])
 
   useEffect(()=>{
@@ -106,7 +106,7 @@ const Sidebar = () => {
                     <Menu.Item>
                       {({ active }) => (
                         <a
-                          href="#"
+                          href="# "
                           className={classNames(
                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                             'block px-4 py-2 text-sm'
@@ -119,7 +119,7 @@ const Sidebar = () => {
                     <Menu.Item>
                       {({ active }) => (
                         <a
-                          href="#"
+                          href="# "
                           className={classNames(
                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                             'block px-4 py-2 text-sm'
@@ -132,7 +132,7 @@ const Sidebar = () => {
                     <Menu.Item>
                       {({ active }) => (
                         <a
-                          href="#"
+                          href="# "
                           className={classNames(
                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                             'block px-4 py-2 text-sm'
@@ -147,7 +147,7 @@ const Sidebar = () => {
                     <Menu.Item>
                       {({ active }) => (
                         <a
-                          href="#"
+                          href="# "
                           className={classNames(
                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                             'block px-4 py-2 text-sm'
@@ -160,7 +160,7 @@ const Sidebar = () => {
                     <Menu.Item>
                       {({ active }) => (
                         <a
-                          href="#"
+                          href="# "
                           className={classNames(
                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                             'block px-4 py-2 text-sm'
@@ -175,7 +175,7 @@ const Sidebar = () => {
                     <Menu.Item>
                       {({ active }) => (
                         <a
-                          href="#"
+                          href="# "
                           className={classNames(
                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                             'block px-4 py-2 text-sm'
@@ -263,7 +263,7 @@ const Sidebar = () => {
                 {nombreAsignaturas.map((asignatura) => (
                     <a
                       key={asignatura}
-                      href='#'
+                      href='# '
                       className="group flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
                     >
 {/*                       <span

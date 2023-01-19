@@ -1,22 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { Link, NavigationType, UNSAFE_NavigationContext, useNavigationType } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom';
-import LanaIcon from '../../../assets/avatars/lana.svg'
 import Buildings from '../../../assets/media/Buildings.svg'
 import UsersThree from '../../../assets/media/UsersThree.svg'
 import Notebook from '../../../assets/media/Notebook.svg'
 import BookOpen from '../../../assets/media/BookOpen.svg'
 import PaperPlaneTilt from '../../../assets/media/PaperPlaneTilt.svg'
 import AnonimIcon from '../../../assets/media/AnonimIcon.svg'
-
-import { Fragment } from 'react'
-import { Menu, Transition } from '@headlessui/react'
-import {
-  ChevronUpDownIcon,
-  MagnifyingGlassIcon,
-  RocketLaunchIcon,
-} from '@heroicons/react/20/solid'
-import { Bars4Icon, ClockIcon, HomeIcon } from '@heroicons/react/24/outline'
 
 
 const navigation = [
@@ -25,11 +15,6 @@ const navigation = [
   { name: 'Asignaturas/Ramas', route: '/anonimo/asignaturas', href: '#', current: false, icon: Notebook },
   { name: 'Normas ESO/Bach.', route: '/anonimo/normativa', href: '#', current: false, icon: BookOpen },
   { name: 'Contacto + RRSS', route: '/anonimo/contacto', href: '#', current: false, icon: PaperPlaneTilt },
-]
-const teams = [
-  { name: 'Engineering', href: '#', bgColorClass: 'bg-indigo-500' },
-  { name: 'Human Resources', href: '#', bgColorClass: 'bg-green-500' },
-  { name: 'Customer Success', href: '#', bgColorClass: 'bg-yellow-500' },
 ]
 
 function classNames(...classes) {

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import { UserContext } from '../../contexts/user.context';
 
 import AprovatLogin from '../../assets/media/mano.jpg';
@@ -85,7 +85,7 @@ const Login = () => {
 
 					<div className="mt-8"> 
 						<div className="mt-6">
-							<form action="#" method="POST" className="space-y-6" onSubmit={handleSubmit}>
+							<form action="# " method="POST" className="space-y-6" onSubmit={handleSubmit}>
 								{/* DNI del usuari */}
 								<div>
 									<label htmlFor="email" className="block text-sm font-medium text-gray-700">

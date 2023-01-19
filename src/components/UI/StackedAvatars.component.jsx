@@ -1,23 +1,7 @@
-import { useState, useEffect } from "react";
-
 
 
 const StackedAvatars = (props) => {
-	/* const [personas, setPersonas] = useState(props); */
 	const { personas } = props;
-	let array = [];
-	/* useEffect(() => {
-		Array.from(props.map((persona) => 
-			array.push(persona.fotoPersona);
-		));
-		setAvatars(array);
-	}, []); */
-
-	/* const { AvatarElsa, AvatarJoan, AvatarEliot, Avatar4, AvatarLana, AvatarAdria } = props;
-
-	const avatars = [
-		AvatarElsa, AvatarJoan, AvatarEliot, Avatar4, AvatarLana, AvatarAdria
-	] */
 
   return (
 		<div className="isolate flex -space-x-2 overflow-hidden">
