@@ -11,6 +11,7 @@ import Contacto from './components/Usuarios/Anonimo/MainColumn/Contacto.componen
 import Infrastructura from './components/Usuarios/Anonimo/MainColumn/Infrastructura.component';
 import EquipoDirectivo from './components/Usuarios/Anonimo/MainColumn/EquipoDirectivo.component';
 import AsignaturasRamas from './components/Usuarios/Anonimo/MainColumn/AsignaturasRamas.component';
+import Perfil from './components/Usuarios/UsuarioValid/MainColumn/Perfil.component';
 
 
 const App = () => {
@@ -28,7 +29,8 @@ const App = () => {
       </Route>
 
       <Route path="dashboard" element={<Home isAnonimo={false} />} >
-        <Route index element={<Dashboard />} />
+      <Route index element={<Dashboard />} />
+      <Route path="perfil" element={<Perfil />} />
       </Route>
     </Routes>
   )

@@ -105,35 +105,7 @@ const Sidebar = () => {
               <div className="py-1">
                 <Menu.Item>
                   {({ active }) => (
-                    <a
-                      href="# "
-                      className={classNames(
-                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                        'block px-4 py-2 text-sm'
-                      )}
-                    >
-                      View profile
-                    </a>
-                  )}
-                </Menu.Item>
-                <Menu.Item>
-                  {({ active }) => (
-                    <a
-                      href="# "
-                      className={classNames(
-                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                        'block px-4 py-2 text-sm'
-                      )}
-                    >
-                      Notifications
-                    </a>
-                  )}
-                </Menu.Item>
-              </div>
-              <div className="py-1">
-                <Menu.Item>
-                  {({ active }) => (
-                    <Link to="/" >
+                    <Link to="/dashboard/perfil">
                       <a
                         href="# "
                         className={classNames(
@@ -141,7 +113,37 @@ const Sidebar = () => {
                           'block px-4 py-2 text-sm'
                         )}
                       >
-                        Logout
+                        Mi Perfil
+                      </a>
+                    </Link>
+                  )}
+                </Menu.Item>
+                <Menu.Item>
+                  {({ active }) => (
+                    <a
+                      href="# "
+                      className={classNames(
+                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                        'block px-4 py-2 text-sm'
+                      )}
+                    >
+                      Notificaciones
+                    </a>
+                  )}
+                </Menu.Item>
+              </div>
+              <div className="py-1">
+                <Menu.Item>
+                  {({ active }) => (
+                    <Link to="/">
+                      <a
+                        href="# "
+                        className={classNames(
+                          active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                          'block px-4 py-2 text-sm'
+                        )}
+                      >
+                        Cerrar sesión
                       </a>
                     </Link>
                   )}
@@ -214,22 +216,43 @@ const Sidebar = () => {
             </h3>
             <div className="mt-1 space-y-1" role="group" aria-labelledby="desktop-pagina-headlineDiv">
               {paginasAprovaT.map((pagina, index) => (
-                <a
-                  key={index}
-                  href="# "
-                  className="group flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
-                >
-                  <img 
-                    src={IconoTabs}
-                    alt="Icono de todas las tabs (>)"
-                    className='text-gray-400 group-hover:text-gray-500 flex-shrink-0 h-6 w-6'
-                  />
-                  <img 
-                    src={pagina.icono}
-                    alt="Icono de la página"
-                    className='text-gray-400 group-hover:text-gray-500 mr-2 flex-shrink-0 h-6 w-6'
-                  />
-                  <span className="truncate">{pagina.nombre}</span>
+                pagina.nombre === "Perfil" ?
+                  (<Link to="/dashboard/perfil">
+                    <a
+                      key={index}
+                      href="# "
+                      className="group flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+                    >
+                      <img 
+                        src={IconoTabs}
+                        alt="Icono de todas las tabs (>)"
+                        className='text-gray-400 group-hover:text-gray-500 flex-shrink-0 h-6 w-6'
+                      />
+                      <img 
+                        src={PerfilIcon}
+                        alt="Icono de la página"
+                        className='text-gray-400 group-hover:text-gray-500 mr-2 flex-shrink-0 h-6 w-6'
+                      />
+                      <span className="truncate"> Perfil </span>
+                    </a>
+                  </Link>)
+                  : 
+                  <a
+                    key={index}
+                    href="# "
+                    className="group flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+                  >
+                    <img 
+                      src={IconoTabs}
+                      alt="Icono de todas las tabs (>)"
+                      className='text-gray-400 group-hover:text-gray-500 flex-shrink-0 h-6 w-6'
+                    />
+                    <img 
+                      src={pagina.icono}
+                      alt="Icono de la página"
+                      className='text-gray-400 group-hover:text-gray-500 mr-2 flex-shrink-0 h-6 w-6'
+                    />
+                    <span className="truncate">{pagina.nombre}</span>
                 </a>
               ))}
             </div>

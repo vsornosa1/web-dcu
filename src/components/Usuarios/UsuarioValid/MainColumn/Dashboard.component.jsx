@@ -101,15 +101,17 @@ const Dashboard = () => {
                   <div className="py-1">
                     <Menu.Item>
                       {({ active }) => (
-                        <a
-                          href="# "
-                          className={classNames(
-                            active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                            'block px-4 py-2 text-sm'
-                          )}
-                        >
-                          View profile
-                        </a>
+                        <Link to="/dashboard/perfil">
+                          <a
+                            href="# "
+                            className={classNames(
+                              active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                              'block px-4 py-2 text-sm'
+                            )}
+                          >
+                            Mi Perfil
+                          </a>
+                        </Link>
                       )}
                     </Menu.Item>
                     <Menu.Item>
@@ -121,7 +123,7 @@ const Dashboard = () => {
                             'block px-4 py-2 text-sm'
                           )}
                         >
-                          Notifications
+                          Notificaciones
                         </a>
                       )}
                     </Menu.Item>
@@ -137,7 +139,7 @@ const Dashboard = () => {
                               'block px-4 py-2 text-sm'
                             )}
                           >
-                            Logout
+                            Cerrar sesión
                           </a>
                         </Link>
                       )}
