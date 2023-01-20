@@ -162,8 +162,8 @@ const Dashboard = () => {
           <h2 className="text-sm font-medium text-gray-900"> 4º ESO: </h2>
             <div className="flex">
               {
-                stats.map(stat => (
-                  <StatsCard className="" item={stat} />
+                stats.map((stat, index) => (
+                  <StatsCard key={index} className="" item={stat} />
                 ))
               }
             </div>

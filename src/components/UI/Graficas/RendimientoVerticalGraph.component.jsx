@@ -41,8 +41,8 @@ const RendimientoVerticalGraph = () => {
 
 				<div className="flex flex-col justify-start px-6 space-x-9">
 						{
-							asignaturas.map(asig => (
-								<div className="grid grid-cols-2 space-y-7 space-x-4">
+							asignaturas.map((asig, index) => (
+								<div key={index} className="grid grid-cols-2 space-y-7 space-x-4">
 									<div className="mt-6"> { asig.nombre } </div>
 									<div className={asig.css} />
 								</div>

@@ -42,8 +42,8 @@ const TotalTestsPieGraph = () => {
 
 					<div className="flex flex-col space-y-6">
 						{
-							notasTests.map(notaTest => (
-								<div className="flex justify-between items-center space-x-6">
+							notasTests.map((notaTest, index) => (
+								<div key={index} className="flex justify-between items-center space-x-6">
 									<div className="flex justify-between items-center space-x-2">
 										<div className={ notaTest.css } />
 										<p className="text-sm"> { notaTest.asignatura } </p>

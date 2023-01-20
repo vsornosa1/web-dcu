@@ -27,8 +27,8 @@ const NotasTestsGraph = () => {
 
 					<div className="flex space-x-4 ml-16">
 						{
-							tests.map(test => (
-								<p className='text-sm'> { test } </p>
+							tests.map((test, index) => (
+								<p key={index} className='text-sm'> { test } </p>
 							))
 						}
 					</div>
