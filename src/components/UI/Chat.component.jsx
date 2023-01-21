@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import MenuIcon from '../../assets/media/MenuIcon.svg';
 import Tick from '../../assets/media/tick.svg';
 import TelefonoIcon from '../../assets/media/TelefonoIcon.svg';
@@ -44,31 +46,47 @@ const chats = [
 	},
 ];
 
-const mensajes = [
-	{
-		contenido: "Hola buenas tardes José !!",
-		hora: "18:16",
-		tieneTick: true,
-		css1: "flex justify-end mb-2",
-		css2: "rounded-xl py-1 px-3 bg-lime-200"
-	},
-	{
-		contenido: "Tengo cita este Lunes y no podré dar clase... Me puedes echar un cable?",
-		hora: "18:16",
-		tieneTick: true,
-		css1: "flex justify-end mb-2",
-		css2: "rounded-xl py-1 px-3 bg-lime-200"
-	},
-	{
-		contenido: "Claro, faltaría más Ana! 😄",
-		hora: "❤️ 18:19",
-		tieneTick: false,
-		css1: "flex mb-2",
-		css2: "rounded-xl py-1 px-3 bg-white"
-	},
-];
 
 const Chat = () => {
+	const [ nuevoMensaje, setNuevoMensaje ] = useState('Escribe un mensaje ...');
+	const [ mensajes, setMensajes ] = useState([
+		{
+			contenido: "Hola buenas tardes José !!",
+			hora: "18:16",
+			tieneTick: true,
+			css1: "flex justify-end mb-2",
+			css2: "rounded-xl py-1 px-3 bg-lime-200"
+		},
+		{
+			contenido: "Tengo cita este Lunes y no podré dar clase... Me puedes echar un cable?",
+			hora: "18:16",
+			tieneTick: true,
+			css1: "flex justify-end mb-2",
+			css2: "rounded-xl py-1 px-3 bg-lime-200"
+		},
+		{
+			contenido: "Claro, faltaría más Ana! 😄",
+			hora: "❤️ 18:19",
+			tieneTick: false,
+			css1: "flex mb-2",
+			css2: "rounded-xl py-1 px-3 bg-white"
+		},
+	]);
+
+	const envioNuevoMensaje = (event) => {
+		event.preventDefault();
+		const dateNow = new Date();
+		mensajes.push({
+			contenido: nuevoMensaje,
+			hora: dateNow.getHours() + ":" + dateNow.getMinutes(),
+			tieneTick: true,
+			css1: "flex justify-end mb-2",
+			css2: "rounded-xl py-1 px-3 bg-lime-200"
+		})
+		setNuevoMensaje('');
+	};
+
+
 	return (
 	<div className="h-full">
 		<div className="container mx-auto">
@@ -205,18 +223,23 @@ const Chat = () => {
 										</div>
 
 										{/* Input */}
-										<div className="bg-grey-lighter px-4 py-4 flex items-center">
+										<div className="bg-grey-lighter p-4 flex items-center">
 											<img 
 												src={EmojiIcon}
 												alt="Emoji icono"
 											/>
-											<div className="flex-1 mx-4">
-													<input className="w-full border-none p-2" type="text" placeholder="Escribe un mensaje ..." />
-											</div>
-											<img 
-												src={EnviarIcon}
-												alt="Enviar icono"
-											/>
+											<form onSubmit={envioNuevoMensaje} className="bg-grey-lighter px-4 py-4 flex items-center flex-1 mx-4">
+												<div className="flex-1">
+													<input className="w-full border-none p-2" type="text" placeholder={nuevoMensaje} 
+														onChange={(event) => setNuevoMensaje(event.target.value)} />
+												</div>
+												<button type="submit">
+													<img 
+														src={EnviarIcon}
+														alt="Enviar icono"
+													/>
+												</button>
+											</form>
 										</div>
 								</div>
 						</div>
