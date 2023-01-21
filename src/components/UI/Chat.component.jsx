@@ -70,12 +70,12 @@ const mensajes = [
 
 const Chat = () => {
 	return (
-	<div className="h-full pt-24">
-		<div className="container mx-auto -mt-28">
-				<div className="py-6 h-screen">
-						<div className="flex border-grey-100 rounded shadow-lg h-full">
-								{/* Left */}
-								<div className="w-1/3 border flex flex-col">
+	<div className="h-full">
+		<div className="container mx-auto">
+				<div className="py-6 h-auto">
+						<div className="flex border-grey-100 rounded shadow-lg h-auto">
+								{/* Sidebar */}
+								<div className="w-1/3 border flex flex-col pb-52">
 
 										{/* Header */}
 										<div className="flex space-x-4 items-center py-2 px-3">
