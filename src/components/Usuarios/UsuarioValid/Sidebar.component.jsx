@@ -237,6 +237,27 @@ const Sidebar = () => {
                     </a>
                   </Link>)
                   : 
+                pagina.nombre === "Chats" ? 
+                  (<Link to="/dashboard/chats">
+                    <a
+                      key={index}
+                      href="# "
+                      className="group flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+                    >
+                      <img 
+                        src={IconoTabs}
+                        alt="Icono de todas las tabs (>)"
+                        className='text-gray-400 group-hover:text-gray-500 flex-shrink-0 h-6 w-6'
+                      />
+                      <img 
+                        src={ChatsIcon}
+                        alt="Icono de la página"
+                        className='text-gray-400 group-hover:text-gray-500 mr-2 flex-shrink-0 h-6 w-6'
+                      />
+                      <span className="truncate"> Chats </span>
+                    </a>
+                  </Link>)
+                  :
                   <a
                     key={index}
                     href="# "

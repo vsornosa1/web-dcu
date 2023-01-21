@@ -11,6 +11,9 @@ module.exports = {
           sky: colors.sky,
           teal: colors.teal,
         },
+        backgroundImage: {
+          'chatPrint': "url('/src/assets/media/ChatPrint.svg')",
+        }
       },
     },
   plugins: [
