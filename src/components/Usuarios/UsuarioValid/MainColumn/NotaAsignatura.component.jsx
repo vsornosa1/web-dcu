@@ -1,38 +1,72 @@
-import { Link } from 'react-router-dom';
-import { Fragment, useContext } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { Menu, Transition } from '@headlessui/react';
+import { Fragment, useState, useEffect, useContext } from 'react';
 import { UserContext } from '../../../../contexts/user.context'; 
 
-import { Menu, Transition } from '@headlessui/react';
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 import AvatarAdria from '../../../../assets/avatars/AvatarAdria.svg';
+import iapTests from '../../../../assets/media/graficas/iapTests.svg';
+import iapProyectos from '../../../../assets/media/graficas/iapProyectos.svg';
 
 import Header from '../../../UI/Header.component';
 import HorarioCard from '../../../UI/Cards/HorarioCard.component';
-import HorarioGraph from '../../../UI/Graficas/HorarioGraph.component';
+import AsignaturaNotasTests from '../../../UI/Graficas/AsignaturaNotasTests.component';
+import StatsCard from '../../../UI/Cards/StatsCard.component';
 
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
+const cardsNotas = [
+  {
+    titulo: "Notas de Tests",
+    grafica: iapTests
+  },
+  {
+    titulo: "Notas de Proyectos y Trabajos",
+    grafica: iapProyectos
+  },
+];
+
+
+const stat1 = { 
+  name: 'Nota Media de Programación II',
+  stat: '7,85', 
+  change: '11\'01% repespecto a tu clase',
+  changeType: 'increase',
+  idx: 2,
+  tieneImg: false
+};
+
 
 const stats = [
   { 
-		name: 'Número de clases hoy',
-		stat: '7', 
+		name: 'Nota del último test',
+		stat: '9,12', 
 		idx: 2,
-		listItems: null
 	},
   { 
-		name: 'Cantidad de entregables hoy',
-		stat: '3',
-		idx: 1,
-		listItems: ["Física", "Química", "Matemáticas II"]
+		name: 'Nota del último trabajo',
+		stat: '9,31',
+		idx: 2,
 	},
 ];
 
+
+
 const NotaAsignatura = () => {
+  const location = useLocation();
+  const [ inicialesAsignatura, setInicialesAsignatura ] = useState("");
 	const { currentUser } = useContext(UserContext);
+
+  useEffect(() => {
+    setInicialesAsignatura(
+      location.pathname.slice("/")[11]
+      + location.pathname.slice("/")[12]
+      + location.pathname.slice("/")[13]
+    );
+  }, [location.pathname])
 
 	return (
 		<div className="flex flex-col lg:pl-64">
@@ -145,20 +179,25 @@ const NotaAsignatura = () => {
 				<div className="mt-6 px-4 sm:px-6 lg:px-12">
 					<div className="flex flex-col justify-start items-start">
 						<p className="text-lg font-semibold"> Hola {currentUser.split(" ")[2]}! </p>
-						<p className="text-base"> Aquí encontrarás todo lo relacionado con tus horarios. </p>
+						<p className="text-base"> Aquí encontrarás todo lo relacionado con la asigantura de {inicialesAsignatura}. </p>
 					</div>
 				</div>
 
         {/* Graphs linea 1 */}
         <div className="mt-6 px-4 sm:px-10 lg:px-12 ">
             <div className="flex space-x-4">
-              <HorarioGraph />
+              {
+                cardsNotas.map((cardNotas, index) => (
+                  <AsignaturaNotasTests key={index} infoCard={cardNotas} />
+                )) 
+              }
             </div>
         </div>
 
 				{/* Stats */}
         <div className="mt-6 px-4 sm:px-6 lg:px-8">
 					<div className="flex">
+            <StatsCard className="" item={stat1} />
 						{
 							stats.map((stat, index) => (
 								<HorarioCard key={index} item={stat} />
@@ -172,4 +211,4 @@ const NotaAsignatura = () => {
 	)
 }
 
-export default NotaAsignatura
+export default NotaAsignatura;

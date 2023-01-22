@@ -5,7 +5,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-const BuildingCard = ({item}) => {
+const StatsCard = ({item}) => {
   return (
     <div key={item.name} 
       className={
@@ -62,4 +62,4 @@ const BuildingCard = ({item}) => {
   )
 }
 
-export default BuildingCard;
+export default StatsCard;
