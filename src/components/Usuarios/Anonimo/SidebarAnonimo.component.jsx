@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import Buildings from '../../../assets/media/Buildings.svg';
@@ -7,10 +7,11 @@ import Notebook from '../../../assets/media/Notebook.svg';
 import BookOpen from '../../../assets/media/BookOpen.svg';
 import PaperPlaneTilt from '../../../assets/media/PaperPlaneTilt.svg';
 import AnonimIcon from '../../../assets/media/AnonimIcon.svg';
+import { UserContext } from '../../../contexts/user.context';
 
 
 const navigation = [
-  { name: 'Infrastructura', route: '/anonimo', href: '#a', current: true, icon: Buildings },
+  { name: 'Infraestructura', route: '/anonimo', href: '#a', current: true, icon: Buildings },
   { name: 'Equipo Directivo', route: '/anonimo/equipo', href: '#', current: false, icon: UsersThree },
   { name: 'Asignaturas/Ramas', route: '/anonimo/asignaturas', href: '#', current: false, icon: Notebook },
   { name: 'Normas ESO/Bach.', route: '/anonimo/normativa', href: '#', current: false, icon: BookOpen },
@@ -25,9 +26,11 @@ function classNames(...classes) {
 
 const SidebarAnonimo = () => {
   const location = useLocation();
+  const { setCurrentUser } = useContext(UserContext);
   const [navItems, setNavItems] = useState(navigation);
 
   useEffect(()=>{
+    setCurrentUser(" Anónimo");
     const a = navigation.map((item)=> {
       return {...item, current: (item.route === location.pathname)};
     });

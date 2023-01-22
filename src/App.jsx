@@ -8,7 +8,7 @@ import Dashboard from './components/Usuarios/UsuarioValid/MainColumn/Dashboard.c
 
 import Normas from './components/Usuarios/Anonimo/MainColumn/Normas.component';
 import Contacto from './components/Usuarios/Anonimo/MainColumn/Contacto.component';
-import Infrastructura from './components/Usuarios/Anonimo/MainColumn/Infrastructura.component';
+import Infraestructura from './components/Usuarios/Anonimo/MainColumn/Infraestructura.component';
 import EquipoDirectivo from './components/Usuarios/Anonimo/MainColumn/EquipoDirectivo.component';
 import AsignaturasRamas from './components/Usuarios/Anonimo/MainColumn/AsignaturasRamas.component';
 import Perfil from './components/Usuarios/UsuarioValid/MainColumn/Perfil.component';
@@ -22,7 +22,7 @@ const App = () => {
       <Route path="/" element={<Login />} />
 
       <Route path="anonimo" element={<Home isAnonimo />} >
-        <Route index element={<Infrastructura />} />
+        <Route index element={<Infraestructura />} />
         <Route path="equipo" element={<EquipoDirectivo />} />
         <Route path="asignaturas" element={<AsignaturasRamas />} />
         <Route path="normativa" element={<Normas />} />

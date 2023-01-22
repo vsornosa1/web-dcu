@@ -40,7 +40,7 @@ const stats = [
 ]
 
 
-const Infrastructura = () => {
+const Infraestructura = () => {
 	return (
 		<div className="flex flex-col lg:pl-64">
 			<main>
@@ -49,7 +49,7 @@ const Infrastructura = () => {
 
 
 				<div className="flex flex-col items-left my-12 mx-8">
-					<h3 className="text-lg font-medium leading-6 text-gray-900"> Infrastructura del centro: </h3>
+					<h3 className="text-lg font-medium leading-6 text-gray-900"> Infraestructura del centro: </h3>
 					<dl className="mt-5 grid grid-cols-1 divide-y divide-gray-200 overflow-hidden rounded-lg bg-white md:grid-cols-3 md:divide-y-0 md:divide-x">
 						{stats.map((item) => (
 							<BuildingCard item={item}/>
@@ -61,4 +61,4 @@ const Infrastructura = () => {
 	)
 }
 
-export default Infrastructura;
+export default Infraestructura;

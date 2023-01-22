@@ -1,20 +1,28 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { HomeIcon } from '@heroicons/react/20/solid'
 import { useLocation } from 'react-router-dom';
+import { UserContext } from '../../contexts/user.context';
 
 
 
 const Breadcrumb = () => {
   const location = useLocation();
+
+  const { currentUser } = useContext(UserContext);
+
   const [pages, setPages] = useState([]);
-  const [currentPage, setCurrentPage] = useState("Infrastructura");
+  const [currentPage, setCurrentPage] = useState("");
 
   useEffect(() => {
     const path = location.pathname.split("/").slice(1);
     const pathNormalized = path.map(p => p.charAt(0).toUpperCase() + p.slice(1));
-    setPages([{ name: "AprovaT " + pathNormalized[0], href: "#", current: false }]);
-    setCurrentPage(pathNormalized[1] || "Infrastructura");
-  }, [location.pathname]);
+
+    setPages([{ name: "AprovaT" + currentUser, href: "#", current: false }]);
+    path[0] === "anonimo" ? 
+      setCurrentPage(pathNormalized[1] || "Infraestructura")
+      : setCurrentPage(pathNormalized[1] || "Dashboard")
+      
+  }, [location.pathname, currentUser]);
 
 
 	return (

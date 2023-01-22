@@ -5,6 +5,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { RightbarProvider } from './contexts/rightbar.context';
+import { UserProvider } from './contexts/user.context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -12,7 +13,9 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <RightbarProvider>
-        <App />
+        <UserProvider>
+          <App />
+        </UserProvider>
       </RightbarProvider>
     </BrowserRouter>  
   </React.StrictMode>

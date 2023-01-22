@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import React, {useState, useEffect, useContext, Fragment} from 'react';
 
 import { RightbarContext } from '../../../contexts/rightbar.context'; 
+import { UserContext } from '../../../contexts/user.context';
 
 import { Menu, Transition } from '@headlessui/react'
 import {
   ChevronUpDownIcon,
 } from '@heroicons/react/20/solid'
 
-import LanaIcon from '../../../assets/avatars/lana.svg'
 import AdriaIcon from '../../../assets/avatars/AvatarAdria.svg'
 
 import PerfilIcon from '../../../assets/media/PerfilIcon.svg';
@@ -49,6 +49,7 @@ const Sidebar = () => {
   const [ asignaturas, setAsignaturas ] = useState([]);
   const [ nombreCompleto, setNombreCompleto ] = useState(null);
   const { setCurrentRightbar } = useContext(RightbarContext);
+  const { setCurrentUser } = useContext(UserContext);
 
 
 
@@ -60,9 +61,10 @@ const Sidebar = () => {
         'Accept':'application/json',
       }
     })
-    .then(async response => {
-      await setAsignaturas(response.data.asignaturas);
-      await setNombreCompleto(response.data.nombre + " " + response.data.apellidos);
+    .then(response => {
+      setAsignaturas(response.data.asignaturas);
+      setNombreCompleto(response.data.nombre + " " + response.data.apellidos);
+      setCurrentUser(" de " + response.data.nombre + " " + response.data.apellidos.split(" ")[0]);
   })
     .catch(error => 
       console.log("X ~ ERROR: Sidebar.component.jsx:71 ~ ", error)
