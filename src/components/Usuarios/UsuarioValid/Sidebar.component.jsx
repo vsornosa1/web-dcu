@@ -30,11 +30,11 @@ const infoAsignaturas = [
 ];
 
 const paginasAprovaT = [
-  { nombre: 'Perfil', icono: PerfilIcon, current: false  },
-  { nombre: 'Centro', icono: CentroIcon, current: false  },
-  { nombre: 'Horario', icono: HorarioIcon, current: false  },
-  { nombre: 'Notificaciones', icono: NotificacionesIcon, current: false  },
-  { nombre: 'Chats', icono: ChatsIcon, current: false  },
+  { nombre: 'Perfil', icono: PerfilIcon, current: false, to:"perfil"  },
+  { nombre: 'Centro', icono: CentroIcon, current: false, to:""  },
+  { nombre: 'Horario', icono: HorarioIcon, current: false, to:"horario"  },
+  { nombre: 'Notificaciones', icono: NotificacionesIcon, current: false, to: ""  },
+  { nombre: 'Chats', icono: ChatsIcon, current: false, to:"chats"  },
 ];
 
 
@@ -198,33 +198,35 @@ const Sidebar = () => {
             </h3>
             <div className="mt-1 space-y-1" role="group" aria-labelledby="desktop-asignaturas-headlineDiv">
               {asignaturas?.map((asignatura, index) => (
-                <a
-                  key={index}
-                  href='# '
-                  className="group flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
-                >
-                  <img 
-                    src={IconoTabs}
-                    alt="Icono de todas las tabs (>)"
-                    className='text-gray-400 group-hover:text-gray-500 flex-shrink-0 h-6 w-6'
-                  />
-                  <img 
-                    src=
-                    {
-                      infoAsignaturas.find(a => {
-                        return a.acronimo === asignatura.id_asig.split(".")[0]
-                      }).icono
-                    }
-                    alt="Icono de todas las tabs (>)"
-                    className='text-gray-400 group-hover:text-gray-500 flex-shrink-0 h-6 w-6 mr-2'
-                  />
-                  <span className="truncate">
-                    { infoAsignaturas.find(a => {
-                        return a.acronimo === asignatura.id_asig.split(".")[0]
-                      }).nombre
-                    }
-                  </span>
-                </a>  
+                <Link to={asignatura.id_asig.split(".")[0]}>
+                  <a
+                    key={index}
+                    href='# '
+                    className="group flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+                  >
+                    <img 
+                      src={IconoTabs}
+                      alt="Icono de todas las tabs (>)"
+                      className='text-gray-400 group-hover:text-gray-500 flex-shrink-0 h-6 w-6'
+                    />
+                    <img 
+                      src=
+                      {
+                        infoAsignaturas.find(a => {
+                          return a.acronimo === asignatura.id_asig.split(".")[0]
+                        }).icono
+                      }
+                      alt="Icono de todas las tabs (>)"
+                      className='text-gray-400 group-hover:text-gray-500 flex-shrink-0 h-6 w-6 mr-2'
+                    />
+                    <span className="truncate">
+                      { infoAsignaturas.find(a => {
+                          return a.acronimo === asignatura.id_asig.split(".")[0]
+                        }).nombre
+                      }
+                    </span>
+                  </a>  
+                </Link>
               ))}
             </div>
           </div>
@@ -234,85 +236,45 @@ const Sidebar = () => {
             </h3>
             <div className="mt-1 space-y-1" role="group" aria-labelledby="desktop-pagina-headlineDiv">
               {paginasAprovaT.map((pagina, index) => (
-                pagina.nombre === "Perfil" ?
-                  (<Link to="/dashboard/perfil">
-                    <a
-                      key={index}
-                      href="# "
-                      className="group flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
-                    >
-                      <img 
-                        src={IconoTabs}
-                        alt="Icono de todas las tabs (>)"
-                        className='text-gray-400 group-hover:text-gray-500 flex-shrink-0 h-6 w-6'
-                      />
-                      <img 
-                        src={PerfilIcon}
-                        alt="Icono de la página"
-                        className='text-gray-400 group-hover:text-gray-500 mr-2 flex-shrink-0 h-6 w-6'
-                      />
-                      <span className="truncate"> Perfil </span>
-                    </a>
-                  </Link>)
-                  : 
-                  pagina.nombre === "Chats" ? 
-                    (<Link to="/dashboard/chats">
-                      <a
-                        key={`a${index}`}
-                        href="# "
-                        className="group flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
-                      >
-                        <img 
-                          src={IconoTabs}
-                          alt="Icono de todas las tabs (>)"
-                          className='text-gray-400 group-hover:text-gray-500 flex-shrink-0 h-6 w-6'
-                        />
-                        <img 
-                          src={ChatsIcon}
-                          alt="Icono de la página"
-                          className='text-gray-400 group-hover:text-gray-500 mr-2 flex-shrink-0 h-6 w-6'
-                        />
-                        <span className="truncate"> Chats </span>
-                      </a>
-                    </Link>)
-                    :
-                    pagina.nombre === "Notificaciones" ? 
-                      <a
-                        key={`b${index}`}
-                        href="# "
-                        onClick={() => setCurrentRightbar(true)}
-                        className="group flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
-                      >
-                        <img 
-                          src={IconoTabs}
-                          alt="Icono de todas las tabs (>)"
-                          className='text-gray-400 group-hover:text-gray-500 flex-shrink-0 h-6 w-6'
-                        />
-                        <img 
-                          src={NotificacionesIcon}
-                          alt="Icono de la página"
-                          className='text-gray-400 group-hover:text-gray-500 mr-2 flex-shrink-0 h-6 w-6'
-                        />
-                        <span className="truncate"> Notificaciones </span>
-                      </a>
-                      : 
-                      <a
-                        key={`c${index}`}
-                        href="# "
-                        className="group flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
-                      >
-                        <img 
-                          src={IconoTabs}
-                          alt="Icono de todas las tabs (>)"
-                          className='text-gray-400 group-hover:text-gray-500 flex-shrink-0 h-6 w-6'
-                        />
-                        <img 
-                          src={pagina.icono}
-                          alt="Icono de la página"
-                          className='text-gray-400 group-hover:text-gray-500 mr-2 flex-shrink-0 h-6 w-6'
-                        />
-                        <span className="truncate">{pagina.nombre}</span>
-                      </a>
+                pagina.nombre === "Notificaciones" ? 
+                <a
+                  key={`b${index}`}
+                  href="# "
+                  onClick={() => setCurrentRightbar(true)}
+                  className="group flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+                >
+                  <img 
+                    src={IconoTabs}
+                    alt="Icono de todas las tabs (>)"
+                    className='text-gray-400 group-hover:text-gray-500 flex-shrink-0 h-6 w-6'
+                  />
+                  <img 
+                    src={NotificacionesIcon}
+                    alt="Icono de la página"
+                    className='text-gray-400 group-hover:text-gray-500 mr-2 flex-shrink-0 h-6 w-6'
+                  />
+                  <span className="truncate"> Notificaciones </span>
+                </a>
+                :
+                <Link to={pagina.to}>
+                  <a
+                    key={index}
+                    href="# "
+                    className="group flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+                  >
+                    <img 
+                      src={IconoTabs}
+                      alt="Icono de todas las tabs (>)"
+                      className='text-gray-400 group-hover:text-gray-500 flex-shrink-0 h-6 w-6'
+                    />
+                    <img 
+                      src={pagina.icono}
+                      alt="Icono de la página"
+                      className='text-gray-400 group-hover:text-gray-500 mr-2 flex-shrink-0 h-6 w-6'
+                    />
+                    <span className="truncate"> {pagina.nombre} </span>
+                  </a>
+                </Link>
               ))}
             </div>
           </div>

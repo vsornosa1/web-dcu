@@ -1,13 +1,13 @@
-import React, { useState, useEffect, useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
 
-import Buildings from '../../../assets/media/Buildings.svg';
-import UsersThree from '../../../assets/media/UsersThree.svg';
 import Notebook from '../../../assets/media/Notebook.svg';
 import BookOpen from '../../../assets/media/BookOpen.svg';
-import PaperPlaneTilt from '../../../assets/media/PaperPlaneTilt.svg';
-import AnonimIcon from '../../../assets/media/AnonimIcon.svg';
+import Buildings from '../../../assets/media/Buildings.svg';
 import { UserContext } from '../../../contexts/user.context';
+import AnonimIcon from '../../../assets/media/AnonimIcon.svg';
+import UsersThree from '../../../assets/media/UsersThree.svg';
+import PaperPlaneTilt from '../../../assets/media/PaperPlaneTilt.svg';
 
 
 const navigation = [
@@ -35,7 +35,7 @@ const SidebarAnonimo = () => {
       return {...item, current: (item.route === location.pathname)};
     });
     setNavItems(a);
-  },[location.pathname]);
+  }, [location.pathname]);
   
 
 	return (
