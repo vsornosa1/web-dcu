@@ -13,6 +13,7 @@ import EquipoDirectivo from './components/Usuarios/Anonimo/MainColumn/EquipoDire
 import AsignaturasRamas from './components/Usuarios/Anonimo/MainColumn/AsignaturasRamas.component';
 import Perfil from './components/Usuarios/UsuarioValid/MainColumn/Perfil.component';
 import PaginaChat from './components/Usuarios/UsuarioValid/MainColumn/PaginaChat.component';
+import Horario from './components/Usuarios/UsuarioValid/MainColumn/Horario.component';
 
 
 const App = () => {
@@ -32,6 +33,7 @@ const App = () => {
       <Route path="dashboard" element={<Home isAnonimo={false} />} >
         <Route index element={<Dashboard />} />
         <Route path="perfil" element={<Perfil />} />
+        <Route path="horario" element={<Horario />} />
         <Route path="chats" element={<PaginaChat />} />
       </Route>
     </Routes>

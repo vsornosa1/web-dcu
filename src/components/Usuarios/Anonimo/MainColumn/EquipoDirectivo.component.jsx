@@ -1,13 +1,13 @@
 import Header from "../../../UI/Header.component";
-import EquipoCard from "../../../UI/Cards/EquipoCard.component";
 import SearchBar from "../../../UI/SearchBar.component";
+import EquipoCard from "../../../UI/Cards/EquipoCard.component";
 import StackedAvatars from "../../../UI/StackedAvatars.component";
 
+import Avatar4 from '../../../../assets/avatars/Avatar4.svg';
+import AvatarLana from '../../../../assets/avatars/AvatarLana.svg';
 import AvatarElsa from '../../../../assets/avatars/AvatarElsa.svg';
 import AvatarJoan from '../../../../assets/avatars/AvatarJoan.svg';
 import AvatarEliot from '../../../../assets/avatars/AvatarEliot.svg';
-import Avatar4 from '../../../../assets/avatars/Avatar4.svg';
-import AvatarLana from '../../../../assets/avatars/AvatarLana.svg';
 import AvatarAdria from '../../../../assets/avatars/AvatarAdria.svg';
 
 

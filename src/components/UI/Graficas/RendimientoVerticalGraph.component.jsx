@@ -1,5 +1,6 @@
 
 const asignaturas = [
+	{},
 	{
 		nombre: "Mat. II",
 		css: "bg-slate-300 flex-1 rounded-r-full h-2.5 w-2/3"
@@ -34,17 +35,18 @@ const asignaturas = [
 const RendimientoVerticalGraph = () => {
   return (
 		<div className="flex-1">
-			<div className="bg-slate-100 flex-1 flex flex-col h-full space-y-2 justify-between rounded-xl p-6">
-				<div>
-					<p className="font-semibold text-lg"> Rendimiento Total </p>
-				</div>
+			<div className="bg-slate-100 flex flex-1 flex-col h-full space-y-2 justify-between rounded-xl p-6">
+
+				<p className="font-semibold text-lg"> Rendimiento Total </p>
+
 
 				<div className="flex flex-col justify-start px-6 space-x-9">
 						{
 							asignaturas.map((asig, index) => (
-								<div key={index} className="grid grid-cols-2 space-y-7 space-x-4">
-									<div className="mt-6"> { asig.nombre } </div>
-									<div className={asig.css} />
+
+								<div key={index} className="grid grid-cols-10 space-y-7 space-x-4">
+									<div className="mt-6 col-span-1"> { asig.nombre } </div>
+									<div className={`col-span-9 ${asig.css}`} />
 								</div>
 							))
 						}

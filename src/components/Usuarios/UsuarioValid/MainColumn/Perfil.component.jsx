@@ -47,7 +47,7 @@ const Perfil = () => {
     .catch(error => 
       console.log("X ~ ERROR: Sidebar.component.jsx:71 ~ ", error)
     )
-  }, [])
+  }, []);
 
 
 

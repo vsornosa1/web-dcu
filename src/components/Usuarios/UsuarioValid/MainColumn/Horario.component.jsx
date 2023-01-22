@@ -1,19 +1,14 @@
-import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import { Fragment, useContext } from 'react';
+import { UserContext } from '../../../../contexts/user.context'; 
 
 import { Menu, Transition } from '@headlessui/react';
-import {
-  MagnifyingGlassIcon,
-} from '@heroicons/react/20/solid';
+import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 import AvatarAdria from '../../../../assets/avatars/AvatarAdria.svg';
 
-
 import Header from '../../../UI/Header.component';
-import StatsCard from '../../../UI/Cards/StatsCard.component';
-import NotaMediaDoubleLineGraph from '../../../UI/Graficas/NotaMediaDoubleLineGraph.component';
-import RendimientoVerticalGraph from '../../../UI/Graficas/RendimientoVerticalGraph.component';
-import NotasTestsGraph from '../../../UI/Graficas/NotasTestsGraph.component';
-import TotalTestsPieGraph from '../../../UI/Graficas/TotalTestsPieGraph.component';
+import HorarioCard from '../../../UI/Cards/HorarioCard.component';
+import HorarioGraph from '../../../UI/Graficas/HorarioGraph.component';
 
 
 function classNames(...classes) {
@@ -23,33 +18,22 @@ function classNames(...classes) {
 
 const stats = [
   { 
-		name: 'Nota Media ESO',
-		stat: '8,21', 
-		change: '11\'01%',
-		changeType: 'increase',
+		name: 'Número de clases hoy',
+		stat: '7', 
 		idx: 2,
-		tieneImg: false
+		listItems: null
 	},
   { 
-		name: 'Tests totales 4º ESO',
-		stat: '367',
-		change: '9\'15%',
-		changeType: 'increase',
+		name: 'Cantidad de entregables hoy',
+		stat: '3',
 		idx: 1,
-		tieneImg: false
+		listItems: ["Física", "Química", "Matemáticas II"]
 	},
-  { 
-		name: 'Tareas entregadas',
-		stat: '1.016',
-		change: '-0\'56%',
-		changeType: 'decrease',
-		idx: 2,
-		tieneImg: false
-	},
-]
+];
 
 
-const Dashboard = () => {
+const Horario = () => {
+	const { currentUser } = useContext(UserContext);
 
 	return (
 		<div className="flex flex-col lg:pl-64">
@@ -159,39 +143,34 @@ const Dashboard = () => {
         {/* Header de dalt */}
         <Header />
 
-        {/* Stats */}
-        <div className="mt-6 px-4 sm:px-6 lg:px-8">
-          <h2 className="text-sm font-medium text-gray-900"> 4º ESO: </h2>
-            <div className="flex">
-              {
-                stats.map((stat, index) => (
-                  <StatsCard key={index} className="" item={stat} />
-                ))
-              }
-            </div>
-        </div>
+				<div className="mt-6 px-4 sm:px-6 lg:px-12">
+					<div className="flex flex-col justify-start items-start">
+						<p className="text-lg font-semibold"> Hola {currentUser.split(" ")[2]}! </p>
+						<p className="text-base"> Aquí encontrarás todo lo relacionado con tus horarios. </p>
+					</div>
+				</div>
 
         {/* Graphs linea 1 */}
         <div className="mt-6 px-4 sm:px-10 lg:px-12 ">
             <div className="flex space-x-4">
-              <NotaMediaDoubleLineGraph />
-              <RendimientoVerticalGraph />
+              <HorarioGraph />
             </div>
         </div>
 
-        {/* Graphs linea bottom */}
-        <div className="mt-6 px-4 sm:px-10 lg:px-12 ">
-            <div className="flex space-x-4">
-              <NotasTestsGraph />
-              <TotalTestsPieGraph />
-            </div>
+				{/* Stats */}
+        <div className="mt-6 px-4 sm:px-6 lg:px-8">
+					<div className="flex">
+						{
+							stats.map((stat, index) => (
+								<HorarioCard key={index} item={stat} />
+							))
+						}
+					</div>
         </div>
-
-        
         
       </main>
     </div>
 	)
 }
 
-export default Dashboard;
+export default Horario;

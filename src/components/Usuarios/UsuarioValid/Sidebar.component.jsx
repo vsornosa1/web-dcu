@@ -2,26 +2,24 @@ import axios from 'redaxios';
 import { Link } from 'react-router-dom';
 import React, {useState, useEffect, useContext, Fragment} from 'react';
 
-import { RightbarContext } from '../../../contexts/rightbar.context'; 
 import { UserContext } from '../../../contexts/user.context';
+import { RightbarContext } from '../../../contexts/rightbar.context'; 
 
-import { Menu, Transition } from '@headlessui/react'
-import {
-  ChevronUpDownIcon,
-} from '@heroicons/react/20/solid'
+import { Menu, Transition } from '@headlessui/react';
+import { ChevronUpDownIcon } from '@heroicons/react/20/solid';
 
-import AdriaIcon from '../../../assets/avatars/AvatarAdria.svg'
+import AdriaIcon from '../../../assets/avatars/AvatarAdria.svg';
 
+import ChartBar from '../../../assets/media/ChartBar.svg';
+import ChatsIcon from '../../../assets/media/ChatsIcon.svg';
+import IconoTabs from '../../../assets/media/IconoTabs.svg';
 import PerfilIcon from '../../../assets/media/PerfilIcon.svg';
 import CentroIcon from '../../../assets/media/CentroIcon.svg';
 import HorarioIcon from '../../../assets/media/HorarioIcon.svg';
-import NotificacionesIcon from '../../../assets/media/NotificacionesIcon.svg';
-import ChatsIcon from '../../../assets/media/ChatsIcon.svg';
-import IconoTabs from '../../../assets/media/IconoTabs.svg';
 import Asignatura1 from '../../../assets/media/Asignatura1.svg';
 import Asignatura2 from '../../../assets/media/Asignatura2.svg';
 import Asignatura3 from '../../../assets/media/Asignatura3.svg';
-import ChartBar from '../../../assets/media/ChartBar.svg';
+import NotificacionesIcon from '../../../assets/media/NotificacionesIcon.svg';
 
 
 
@@ -37,7 +35,7 @@ const paginasAprovaT = [
   { nombre: 'Horario', icono: HorarioIcon, current: false  },
   { nombre: 'Notificaciones', icono: NotificacionesIcon, current: false  },
   { nombre: 'Chats', icono: ChatsIcon, current: false  },
-]
+];
 
 
 
@@ -51,8 +49,7 @@ const Sidebar = () => {
   const { setCurrentRightbar } = useContext(RightbarContext);
   const { setCurrentUser } = useContext(UserContext);
 
-
-
+  
   useEffect(() => {
     axios.get({
       method: 'get',
@@ -69,7 +66,7 @@ const Sidebar = () => {
     .catch(error => 
       console.log("X ~ ERROR: Sidebar.component.jsx:71 ~ ", error)
     )
-  }, [])
+  }, []);
 
 
 	return (
