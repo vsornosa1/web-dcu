@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 
 
 export const RightbarContext = createContext(
@@ -12,10 +12,6 @@ export const RightbarContext = createContext(
 export const RightbarProvider = ({ children }) => {
 	const [currentRightbar, setCurrentRightbar] = useState(false);
 	const value = { currentRightbar, setCurrentRightbar };
-
-	useEffect(()=>{
-		console.log(currentRightbar)
-	}, [currentRightbar]);
 
 	return <RightbarContext.Provider value={value}> {children} </RightbarContext.Provider>
 }

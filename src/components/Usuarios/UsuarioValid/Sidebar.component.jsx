@@ -10,6 +10,8 @@ import {
 } from '@heroicons/react/20/solid'
 
 import LanaIcon from '../../../assets/avatars/lana.svg'
+import AdriaIcon from '../../../assets/avatars/AvatarAdria.svg'
+
 import PerfilIcon from '../../../assets/media/PerfilIcon.svg';
 import CentroIcon from '../../../assets/media/CentroIcon.svg';
 import HorarioIcon from '../../../assets/media/HorarioIcon.svg';
@@ -44,8 +46,10 @@ function classNames(...classes) {
 }
 
 const Sidebar = () => {
-  const [ asignaturas, setAsignaturas ] = useState([])
+  const [ asignaturas, setAsignaturas ] = useState([]);
+  const [ nombreCompleto, setNombreCompleto ] = useState(null);
   const { setCurrentRightbar } = useContext(RightbarContext);
+
 
 
   useEffect(() => {
@@ -56,9 +60,10 @@ const Sidebar = () => {
         'Accept':'application/json',
       }
     })
-    .then(async response => 
-      await setAsignaturas(response.data.asignaturas)
-    )
+    .then(async response => {
+      await setAsignaturas(response.data.asignaturas);
+      await setNombreCompleto(response.data.nombre + " " + response.data.apellidos);
+  })
     .catch(error => 
       console.log("X ~ ERROR: Sidebar.component.jsx:71 ~ ", error)
     )
@@ -78,12 +83,12 @@ const Sidebar = () => {
                   
                   <img
                     className="h-12 w-12 flex-shrink-0 rounded-full bg-gray-300"
-                    src={LanaIcon}
-                    alt=""
+                    src={AdriaIcon}
+                    alt="Avatar del alumno"
                   />
                   <span className="flex min-w-0 flex-1 flex-col">
-                    <span className="truncate text-sm font-medium text-gray-900"> Lana Ruedines </span>
-                    <span className="truncate text-sm text-gray-500"> ruedines@upv.es </span>
+                    <span className="truncate text-sm font-medium text-gray-900"> { nombreCompleto } </span>
+                    <span className="truncate text-sm text-gray-500"> {nombreCompleto?.split(" ")[0].toLowerCase()}.{nombreCompleto?.split(" ")[1].toLowerCase()}@upv.es </span>
                   </span>
                 </span>
                 <ChevronUpDownIcon
