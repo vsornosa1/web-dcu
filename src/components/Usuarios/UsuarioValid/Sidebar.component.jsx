@@ -1,12 +1,12 @@
 import axios from 'redaxios';
-import { UserContext } from '../../../contexts/user.context'
 import { Link } from 'react-router-dom';
 import React, {useState, useEffect, useContext, Fragment} from 'react';
+
+import { RightbarContext } from '../../../contexts/rightbar.context'; 
 
 import { Menu, Transition } from '@headlessui/react'
 import {
   ChevronUpDownIcon,
-  MagnifyingGlassIcon,
 } from '@heroicons/react/20/solid'
 
 import LanaIcon from '../../../assets/avatars/lana.svg'
@@ -19,6 +19,7 @@ import IconoTabs from '../../../assets/media/IconoTabs.svg';
 import Asignatura1 from '../../../assets/media/Asignatura1.svg';
 import Asignatura2 from '../../../assets/media/Asignatura2.svg';
 import Asignatura3 from '../../../assets/media/Asignatura3.svg';
+import ChartBar from '../../../assets/media/ChartBar.svg';
 
 
 
@@ -43,8 +44,8 @@ function classNames(...classes) {
 }
 
 const Sidebar = () => {
-  const { currentUser } = useContext(UserContext);
   const [ asignaturas, setAsignaturas ] = useState([])
+  const { setCurrentRightbar } = useContext(RightbarContext);
 
 
   useEffect(() => {
@@ -61,7 +62,7 @@ const Sidebar = () => {
     .catch(error => 
       console.log("X ~ ERROR: Sidebar.component.jsx:71 ~ ", error)
     )
-  }, [currentUser])
+  }, [])
 
 
 	return (
@@ -81,7 +82,7 @@ const Sidebar = () => {
                     alt=""
                   />
                   <span className="flex min-w-0 flex-1 flex-col">
-                    <span className="truncate text-sm font-medium text-gray-900"> {currentUser} </span>
+                    <span className="truncate text-sm font-medium text-gray-900"> Lana Ruedines </span>
                     <span className="truncate text-sm text-gray-500"> ruedines@upv.es </span>
                   </span>
                 </span>
@@ -122,6 +123,7 @@ const Sidebar = () => {
                   {({ active }) => (
                     <a
                       href="# "
+                      onClick={() => setCurrentRightbar(true)}
                       className={classNames(
                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                         'block px-4 py-2 text-sm'
@@ -152,27 +154,39 @@ const Sidebar = () => {
             </Menu.Items>
           </Transition>
         </Menu>
-        {/* Sidebar Search */}
-        <div className="mt-5 px-3">
-          <label htmlFor="search" className="sr-only">
-            Buscar...
-          </label>
-          <div className="relative mt-1 rounded-md shadow-sm">
-            <div
-              className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
-              aria-hidden="true"
-            >
-              <MagnifyingGlassIcon className="mr-3 h-4 w-4 text-gray-400" aria-hidden="true" />
+        <nav className="mt-6 px-3">
+          <div className='mt-8'>
+            <div className="flex px-3 justify-start space-x-4">
+              <h3 className="px-3 text-sm font-medium text-gray-500" id="desktop-favoritos-headline">
+                Favoritos
+              </h3>
+              <h3 className="px-3 text-sm font-medium text-gray-400" id="desktop-recientes-headline">
+                Recientes
+              </h3>
             </div>
-            <input
-              type="text"
-              name="search"
-              id="search"
-              className="block w-full rounded-md border-gray-300 pl-9 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-              placeholder="Buscar..."
-            />
+            
+            <div className="mt-1 space-y-1" role="group" aria-labelledby="desktop-asignaturas-headlineDiv">
+              <Link to="/dashboard">
+                <a
+                href='# '
+                className="group flex items-center rounded-md px-3 py-2 text-sm font-medium bg-gray-200 text-gray-700 hover:bg-gray-300 hover:text-gray-900"
+                >
+                  <img 
+                    src={IconoTabs}
+                    alt="Icono de todas las tabs (>)"
+                    className='text-gray-400 group-hover:text-gray-500 flex-shrink-0 h-6 w-6'
+                  />
+                  <img 
+                    src={ChartBar}
+                    alt="Chart Bar icono"
+                    className='text-gray-400 group-hover:text-gray-500 flex-shrink-0 h-6 w-6 mr-2'
+                  />
+                  <span className="truncate"> Dashboard </span>
+                </a>  
+              </Link>
+            </div>
           </div>
-        </div>
+        </nav>
         <nav className="mt-6 px-3">
           <div className='mt-8'>
             <h3 className="px-3 text-sm font-medium text-gray-500" id="desktop-asignaturas-headline">
@@ -237,44 +251,64 @@ const Sidebar = () => {
                     </a>
                   </Link>)
                   : 
-                pagina.nombre === "Chats" ? 
-                  (<Link to="/dashboard/chats">
-                    <a
-                      key={index}
-                      href="# "
-                      className="group flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
-                    >
-                      <img 
-                        src={IconoTabs}
-                        alt="Icono de todas las tabs (>)"
-                        className='text-gray-400 group-hover:text-gray-500 flex-shrink-0 h-6 w-6'
-                      />
-                      <img 
-                        src={ChatsIcon}
-                        alt="Icono de la página"
-                        className='text-gray-400 group-hover:text-gray-500 mr-2 flex-shrink-0 h-6 w-6'
-                      />
-                      <span className="truncate"> Chats </span>
-                    </a>
-                  </Link>)
-                  :
-                  <a
-                    key={index}
-                    href="# "
-                    className="group flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
-                  >
-                    <img 
-                      src={IconoTabs}
-                      alt="Icono de todas las tabs (>)"
-                      className='text-gray-400 group-hover:text-gray-500 flex-shrink-0 h-6 w-6'
-                    />
-                    <img 
-                      src={pagina.icono}
-                      alt="Icono de la página"
-                      className='text-gray-400 group-hover:text-gray-500 mr-2 flex-shrink-0 h-6 w-6'
-                    />
-                    <span className="truncate">{pagina.nombre}</span>
-                </a>
+                  pagina.nombre === "Chats" ? 
+                    (<Link to="/dashboard/chats">
+                      <a
+                        key={`a${index}`}
+                        href="# "
+                        className="group flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+                      >
+                        <img 
+                          src={IconoTabs}
+                          alt="Icono de todas las tabs (>)"
+                          className='text-gray-400 group-hover:text-gray-500 flex-shrink-0 h-6 w-6'
+                        />
+                        <img 
+                          src={ChatsIcon}
+                          alt="Icono de la página"
+                          className='text-gray-400 group-hover:text-gray-500 mr-2 flex-shrink-0 h-6 w-6'
+                        />
+                        <span className="truncate"> Chats </span>
+                      </a>
+                    </Link>)
+                    :
+                    pagina.nombre === "Notificaciones" ? 
+                      <a
+                        key={`b${index}`}
+                        href="# "
+                        onClick={() => setCurrentRightbar(true)}
+                        className="group flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+                      >
+                        <img 
+                          src={IconoTabs}
+                          alt="Icono de todas las tabs (>)"
+                          className='text-gray-400 group-hover:text-gray-500 flex-shrink-0 h-6 w-6'
+                        />
+                        <img 
+                          src={NotificacionesIcon}
+                          alt="Icono de la página"
+                          className='text-gray-400 group-hover:text-gray-500 mr-2 flex-shrink-0 h-6 w-6'
+                        />
+                        <span className="truncate"> Notificaciones </span>
+                      </a>
+                      : 
+                      <a
+                        key={`c${index}`}
+                        href="# "
+                        className="group flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+                      >
+                        <img 
+                          src={IconoTabs}
+                          alt="Icono de todas las tabs (>)"
+                          className='text-gray-400 group-hover:text-gray-500 flex-shrink-0 h-6 w-6'
+                        />
+                        <img 
+                          src={pagina.icono}
+                          alt="Icono de la página"
+                          className='text-gray-400 group-hover:text-gray-500 mr-2 flex-shrink-0 h-6 w-6'
+                        />
+                        <span className="truncate">{pagina.nombre}</span>
+                      </a>
               ))}
             </div>
           </div>

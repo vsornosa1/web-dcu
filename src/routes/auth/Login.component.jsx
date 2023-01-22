@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useState, useContext } from "react";
-import { UserContext } from '../../contexts/user.context';
+import { useState } from "react";
 
 import AprovatLogin from '../../assets/media/mano.jpg';
 import ErrorModal from '../../components/UI/ErrorModal.component';
@@ -30,13 +29,9 @@ const usuarios = [
 
 
 const Login = () => {
-	const { currentUser, setCurrentUser } = useContext(UserContext)
-
 	const [ formFields, setFormFields ] = useState(defaultFormFields);
 	const { usuario, password } = formFields;
 	const [ validCredentials, setValidCredentials ] = useState(true);
-
-
 
 
 	const resetFormFields = () => {
@@ -50,8 +45,6 @@ const Login = () => {
 			&& u.contraseña === password
 		);
 		if(usuariValid){
-			setCurrentUser(usuariValid);
-			console.log(currentUser)
 			window.location.replace('/dashboard');
 		} else {
 			resetFormFields();

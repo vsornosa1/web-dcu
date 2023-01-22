@@ -6,6 +6,7 @@ import TransitionRoot from '../../components/Usuarios/UsuarioValid/TransitionRoo
 
 import SidebarAnonimo from '../../components/Usuarios/Anonimo/SidebarAnonimo.component';
 import TransitionRootAnonimo from '../../components/Usuarios/Anonimo/TransitionRootAnonimo.component';
+import Rightbar from '../../components/Usuarios/UsuarioValid/Rightbar.component';
 
 const Home = (props) => {
 	const { isAnonimo } = props;
@@ -25,6 +26,7 @@ const Home = (props) => {
 					<TransitionRoot />
 					<Sidebar />
 					<Outlet />
+					<Rightbar />
 				</div>
 			)}
 		</>

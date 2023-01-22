@@ -83,7 +83,7 @@ const Chat = () => {
 			css1: "flex justify-end mb-2",
 			css2: "rounded-xl py-1 px-3 bg-lime-200"
 		})
-		setNuevoMensaje('');
+		setNuevoMensaje(" ");
 	};
 
 
